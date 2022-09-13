@@ -1,0 +1,10 @@
+
+# generated files
+.sass-cache
+_site
+api-docs
+_data/authors.yml
+
+# downloaded files
+api-docs-gen/consolidated
+api-docs-gen/node_modules
