@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>dc.js Getting Started and How-To Guide</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="../docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-1">&#x00a7;</a>
+              </div>
+              <h1 id="dcjs-getting-started-and-how-to-guide">dc.js Getting Started and How-To Guide</h1>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-meta">&#x27;use strict&#x27;</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-2">&#x00a7;</a>
+              </div>
+              <h3 id="create-chart-group">Create Chart group</h3>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-3">&#x00a7;</a>
+              </div>
+              <p>This allows associating all charts that are linked together and should respond to changes in other charts</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">const</span> chartGroup = <span class="hljs-keyword">new</span> dc.<span class="hljs-title class_">ChartGroup</span>();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-4">&#x00a7;</a>
+              </div>
+              <h3 id="create-chart-objects">Create Chart Objects</h3>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-5">&#x00a7;</a>
+              </div>
+              <p>Create chart objects associated with the container elements identified by the css selector.
+Note: It is often a good idea to have these objects accessible at the global scope so that they can be modified or
+filtered by other page controls.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">const</span> gainOrLossChart = <span class="hljs-keyword">new</span> dc.<span class="hljs-title class_">PieChart</span>(<span class="hljs-string">&#x27;#gain-loss-chart&#x27;</span>, chartGroup);
+<span class="hljs-keyword">const</span> fluctuationChart = <span class="hljs-keyword">new</span> dc.<span class="hljs-title class_">BarChart</span>(<span class="hljs-string">&#x27;#fluctuation-chart&#x27;</span>, chartGroup);
+<span class="hljs-keyword">const</span> quarterChart = <span class="hljs-keyword">new</span> dc.<span class="hljs-title class_">PieChart</span>(<span class="hljs-string">&#x27;#quarter-chart&#x27;</span>, chartGroup);
+<span class="hljs-keyword">const</span> dayOfWeekChart = <span class="hljs-keyword">new</span> dc.<span class="hljs-title class_">RowChart</span>(<span class="hljs-string">&#x27;#day-of-week-chart&#x27;</span>, chartGroup);
+<span class="hljs-keyword">const</span> moveChart = <span class="hljs-keyword">new</span> dc.<span class="hljs-title class_">LineChart</span>(<span class="hljs-string">&#x27;#monthly-move-chart&#x27;</span>, chartGroup);
+<span class="hljs-keyword">const</span> volumeChart = <span class="hljs-keyword">new</span> dc.<span class="hljs-title class_">BarChart</span>(<span class="hljs-string">&#x27;#monthly-volume-chart&#x27;</span>, chartGroup);
+<span class="hljs-keyword">const</span> yearlyBubbleChart = <span class="hljs-keyword">new</span> dc.<span class="hljs-title class_">BubbleChart</span>(<span class="hljs-string">&#x27;#yearly-bubble-chart&#x27;</span>, chartGroup);
+<span class="hljs-keyword">const</span> nasdaqCount = <span class="hljs-keyword">new</span> dc.<span class="hljs-title class_">DataCount</span>(<span class="hljs-string">&#x27;.dc-data-count&#x27;</span>, chartGroup);
+<span class="hljs-keyword">const</span> nasdaqTable = <span class="hljs-keyword">new</span> dc.<span class="hljs-title class_">DataTable</span>(<span class="hljs-string">&#x27;.dc-data-table&#x27;</span>, chartGroup);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-6">&#x00a7;</a>
+              </div>
+              <h3 id="anchor-div-for-charts">Anchor Div for Charts</h3>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/*
+</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-7">&#x00a7;</a>
+              </div>
+              <p>A div anchor that can be identified by id</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    &lt;div id=<span class="hljs-string">&#x27;your-chart&#x27;</span>&gt;&lt;/div&gt;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-8">&#x00a7;</a>
+              </div>
+              <p>Title or anything you want to add above the chart</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    &lt;div id=<span class="hljs-string">&#x27;chart&#x27;</span>&gt;<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Days by Gain or Loss<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span>&lt;/div&gt;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-9">&#x00a7;</a>
+              </div>
+              <h5 id="turnoncontrols">.turnOnControls()</h5>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-10">&#x00a7;</a>
+              </div>
+              <p>If a link with css class <code>reset</code> is present then the chart
+will automatically hide/show it based on whether there is a filter
+set on the chart (e.g. slice selection for pie chart and brush
+selection for bar chart). Enable this with <code>chart.turnOnControls(true)</code></p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-11">&#x00a7;</a>
+              </div>
+              <p>By default, dc.js &gt;=2.1 uses <code>display: none</code> to control whether or not chart
+controls are shown. To use <code>visibility: hidden</code> to hide/show controls
+without disrupting the layout, set <code>chart.controlsUseVisibility(true)</code>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+    &lt;div id=<span class="hljs-string">&#x27;chart&#x27;</span>&gt;
+       <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;reset&#x27;</span>
+          <span class="hljs-attr">href</span>=<span class="hljs-string">&#x27;javascript:myChart.filterAll();dc.redrawAll();&#x27;</span>
+          <span class="hljs-attr">style</span>=<span class="hljs-string">&#x27;visibility: hidden;&#x27;</span>&gt;</span>reset<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span>
+    &lt;/div&gt;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-12">&#x00a7;</a>
+              </div>
+              <p>dc.js will also automatically inject the current filter value into
+any html element with its css class set to <code>filter</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    &lt;div id=<span class="hljs-string">&#x27;chart&#x27;</span>&gt;
+        <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;reset&#x27;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#x27;visibility: hidden;&#x27;</span>&gt;</span>
+          Current filter: <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;filter&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span>
+    &lt;/div&gt;
+*/</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-13">&#x00a7;</a>
+              </div>
+              <h3 id="load-your-data">Load your data</h3>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-14">&#x00a7;</a>
+              </div>
+              <p>Data can be loaded through regular means with your
+favorite javascript library</p>
+<pre><code class="language-javascript">d3.<span class="hljs-title function_">csv</span>(<span class="hljs-string">&#x27;data.csv&#x27;</span>).<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) {...});
+d3.<span class="hljs-title function_">json</span>(<span class="hljs-string">&#x27;data.json&#x27;</span>).<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) {...});
+jQuery.<span class="hljs-title function_">getJson</span>(<span class="hljs-string">&#x27;data.json&#x27;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>){...});
+</code></pre>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>d3.<span class="hljs-title function_">csv</span>(<span class="hljs-string">&#x27;ndx.csv&#x27;</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-15">&#x00a7;</a>
+              </div>
+              <p>Since its a csv file we need to format the data a bit.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">const</span> dateFormatSpecifier = <span class="hljs-string">&#x27;%m/%d/%Y&#x27;</span>;
+    <span class="hljs-keyword">const</span> dateFormat = d3.<span class="hljs-title function_">timeFormat</span>(dateFormatSpecifier);
+    <span class="hljs-keyword">const</span> dateFormatParser = d3.<span class="hljs-title function_">timeParse</span>(dateFormatSpecifier);
+    <span class="hljs-keyword">const</span> numberFormat = d3.<span class="hljs-title function_">format</span>(<span class="hljs-string">&#x27;.2f&#x27;</span>);
+
+    data.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> {
+        d.<span class="hljs-property">dd</span> = <span class="hljs-title function_">dateFormatParser</span>(d.<span class="hljs-property">date</span>);
+        d.<span class="hljs-property">month</span> = d3.<span class="hljs-title function_">timeMonth</span>(d.<span class="hljs-property">dd</span>); <span class="hljs-comment">// pre-calculate month for better performance</span>
+        d.<span class="hljs-property">close</span> = +d.<span class="hljs-property">close</span>; <span class="hljs-comment">// coerce to number</span>
+        d.<span class="hljs-property">open</span> = +d.<span class="hljs-property">open</span>;
+    });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-16">&#x00a7;</a>
+              </div>
+              <h3 id="create-crossfilter-dimensions-and-groups">Create Crossfilter Dimensions and Groups</h3>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-17">&#x00a7;</a>
+              </div>
+              <p>See the <a href="https://github.com/square/crossfilter/wiki/API-Reference">crossfilter API</a> for reference.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">const</span> ndx = <span class="hljs-title function_">crossfilter</span>(data);
+    <span class="hljs-keyword">const</span> all = ndx.<span class="hljs-title function_">groupAll</span>();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-18">&#x00a7;</a>
+              </div>
+              <p>Dimension by year</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">const</span> yearlyDimension = ndx.<span class="hljs-title function_">dimension</span>(<span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> d3.<span class="hljs-title function_">timeYear</span>(d.<span class="hljs-property">dd</span>).<span class="hljs-title function_">getFullYear</span>());</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-19">&#x00a7;</a>
+              </div>
+              <p>Maintain running tallies by year as filters are applied or removed</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">const</span> yearlyPerformanceGroup = yearlyDimension.<span class="hljs-title function_">group</span>().<span class="hljs-title function_">reduce</span>(
+        <span class="hljs-comment">/* callback for when data is added to the current filter results */</span>
+        <span class="hljs-function">(<span class="hljs-params">p, v</span>) =&gt;</span> {
+            ++p.<span class="hljs-property">count</span>;
+            p.<span class="hljs-property">absGain</span> += v.<span class="hljs-property">close</span> - v.<span class="hljs-property">open</span>;
+            p.<span class="hljs-property">fluctuation</span> += <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">abs</span>(v.<span class="hljs-property">close</span> - v.<span class="hljs-property">open</span>);
+            p.<span class="hljs-property">sumIndex</span> += (v.<span class="hljs-property">open</span> + v.<span class="hljs-property">close</span>) / <span class="hljs-number">2</span>;
+            p.<span class="hljs-property">avgIndex</span> = p.<span class="hljs-property">sumIndex</span> / p.<span class="hljs-property">count</span>;
+            p.<span class="hljs-property">percentageGain</span> = p.<span class="hljs-property">avgIndex</span> ? (p.<span class="hljs-property">absGain</span> / p.<span class="hljs-property">avgIndex</span>) * <span class="hljs-number">100</span> : <span class="hljs-number">0</span>;
+            p.<span class="hljs-property">fluctuationPercentage</span> = p.<span class="hljs-property">avgIndex</span> ? (p.<span class="hljs-property">fluctuation</span> / p.<span class="hljs-property">avgIndex</span>) * <span class="hljs-number">100</span> : <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">return</span> p;
+        },
+        <span class="hljs-comment">/* callback for when data is removed from the current filter results */</span>
+        <span class="hljs-function">(<span class="hljs-params">p, v</span>) =&gt;</span> {
+            --p.<span class="hljs-property">count</span>;
+            p.<span class="hljs-property">absGain</span> -= v.<span class="hljs-property">close</span> - v.<span class="hljs-property">open</span>;
+            p.<span class="hljs-property">fluctuation</span> -= <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">abs</span>(v.<span class="hljs-property">close</span> - v.<span class="hljs-property">open</span>);
+            p.<span class="hljs-property">sumIndex</span> -= (v.<span class="hljs-property">open</span> + v.<span class="hljs-property">close</span>) / <span class="hljs-number">2</span>;
+            p.<span class="hljs-property">avgIndex</span> = p.<span class="hljs-property">count</span> ? p.<span class="hljs-property">sumIndex</span> / p.<span class="hljs-property">count</span> : <span class="hljs-number">0</span>;
+            p.<span class="hljs-property">percentageGain</span> = p.<span class="hljs-property">avgIndex</span> ? (p.<span class="hljs-property">absGain</span> / p.<span class="hljs-property">avgIndex</span>) * <span class="hljs-number">100</span> : <span class="hljs-number">0</span>;
+            p.<span class="hljs-property">fluctuationPercentage</span> = p.<span class="hljs-property">avgIndex</span> ? (p.<span class="hljs-property">fluctuation</span> / p.<span class="hljs-property">avgIndex</span>) * <span class="hljs-number">100</span> : <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">return</span> p;
+        },
+        <span class="hljs-comment">/* initialize p */</span>
+        <span class="hljs-function">() =&gt;</span> ({
+            <span class="hljs-attr">count</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">absGain</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">fluctuation</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">fluctuationPercentage</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">sumIndex</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">avgIndex</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">percentageGain</span>: <span class="hljs-number">0</span>,
+        })
+    );</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-20">&#x00a7;</a>
+              </div>
+              <p>Dimension by full date</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">const</span> dateDimension = ndx.<span class="hljs-title function_">dimension</span>(<span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> d.<span class="hljs-property">dd</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-21">&#x00a7;</a>
+              </div>
+              <p>Dimension by month</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">const</span> moveMonths = ndx.<span class="hljs-title function_">dimension</span>(<span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> d.<span class="hljs-property">month</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-22">&#x00a7;</a>
+              </div>
+              <p>Group by total movement within month</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">const</span> monthlyMoveGroup = moveMonths.<span class="hljs-title function_">group</span>().<span class="hljs-title function_">reduceSum</span>(<span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">abs</span>(d.<span class="hljs-property">close</span> - d.<span class="hljs-property">open</span>));</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-23">&#x00a7;</a>
+              </div>
+              <p>Group by total volume within move, and scale down result</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">const</span> volumeByMonthGroup = moveMonths.<span class="hljs-title function_">group</span>().<span class="hljs-title function_">reduceSum</span>(<span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> d.<span class="hljs-property">volume</span> / <span class="hljs-number">500000</span>);
+    <span class="hljs-keyword">const</span> indexAvgByMonthGroup = moveMonths.<span class="hljs-title function_">group</span>().<span class="hljs-title function_">reduce</span>(
+        <span class="hljs-function">(<span class="hljs-params">p, v</span>) =&gt;</span> {
+            ++p.<span class="hljs-property">days</span>;
+            p.<span class="hljs-property">total</span> += (v.<span class="hljs-property">open</span> + v.<span class="hljs-property">close</span>) / <span class="hljs-number">2</span>;
+            p.<span class="hljs-property">avg</span> = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">round</span>(p.<span class="hljs-property">total</span> / p.<span class="hljs-property">days</span>);
+            <span class="hljs-keyword">return</span> p;
+        },
+        <span class="hljs-function">(<span class="hljs-params">p, v</span>) =&gt;</span> {
+            --p.<span class="hljs-property">days</span>;
+            p.<span class="hljs-property">total</span> -= (v.<span class="hljs-property">open</span> + v.<span class="hljs-property">close</span>) / <span class="hljs-number">2</span>;
+            p.<span class="hljs-property">avg</span> = p.<span class="hljs-property">days</span> ? <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">round</span>(p.<span class="hljs-property">total</span> / p.<span class="hljs-property">days</span>) : <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">return</span> p;
+        },
+        <span class="hljs-function">() =&gt;</span> ({ <span class="hljs-attr">days</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">total</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">avg</span>: <span class="hljs-number">0</span> })
+    );</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-24">&#x00a7;</a>
+              </div>
+              <p>Create categorical dimension</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">const</span> gainOrLoss = ndx.<span class="hljs-title function_">dimension</span>(<span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> (d.<span class="hljs-property">open</span> &gt; d.<span class="hljs-property">close</span> ? <span class="hljs-string">&#x27;Loss&#x27;</span> : <span class="hljs-string">&#x27;Gain&#x27;</span>));</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-25">&#x00a7;</a>
+              </div>
+              <p>Produce counts records in the dimension</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">const</span> gainOrLossGroup = gainOrLoss.<span class="hljs-title function_">group</span>();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-26">&#x00a7;</a>
+              </div>
+              <p>Determine a histogram of percent changes</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">const</span> fluctuation = ndx.<span class="hljs-title function_">dimension</span>(<span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">round</span>(((d.<span class="hljs-property">close</span> - d.<span class="hljs-property">open</span>) / d.<span class="hljs-property">open</span>) * <span class="hljs-number">100</span>));
+    <span class="hljs-keyword">const</span> fluctuationGroup = fluctuation.<span class="hljs-title function_">group</span>();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-27">&#x00a7;</a>
+              </div>
+              <p>Summarize volume by quarter</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">const</span> quarter = ndx.<span class="hljs-title function_">dimension</span>(<span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> {
+        <span class="hljs-keyword">const</span> month = d.<span class="hljs-property">dd</span>.<span class="hljs-title function_">getMonth</span>();
+        <span class="hljs-keyword">if</span> (month &lt;= <span class="hljs-number">2</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Q1&#x27;</span>;
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (month &gt; <span class="hljs-number">2</span> &amp;&amp; month &lt;= <span class="hljs-number">5</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Q2&#x27;</span>;
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (month &gt; <span class="hljs-number">5</span> &amp;&amp; month &lt;= <span class="hljs-number">8</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Q3&#x27;</span>;
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Q4&#x27;</span>;
+        }
+    });
+    <span class="hljs-keyword">const</span> quarterGroup = quarter.<span class="hljs-title function_">group</span>().<span class="hljs-title function_">reduceSum</span>(<span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> d.<span class="hljs-property">volume</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-28">&#x00a7;</a>
+              </div>
+              <p>Counts per weekday</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">const</span> dayOfWeek = ndx.<span class="hljs-title function_">dimension</span>(<span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> {
+        <span class="hljs-keyword">const</span> day = d.<span class="hljs-property">dd</span>.<span class="hljs-title function_">getDay</span>();
+        <span class="hljs-keyword">const</span> name = [<span class="hljs-string">&#x27;Sun&#x27;</span>, <span class="hljs-string">&#x27;Mon&#x27;</span>, <span class="hljs-string">&#x27;Tue&#x27;</span>, <span class="hljs-string">&#x27;Wed&#x27;</span>, <span class="hljs-string">&#x27;Thu&#x27;</span>, <span class="hljs-string">&#x27;Fri&#x27;</span>, <span class="hljs-string">&#x27;Sat&#x27;</span>];
+        <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${day}</span>.<span class="hljs-subst">${name[day]}</span>`</span>;
+    });
+    <span class="hljs-keyword">const</span> dayOfWeekGroup = dayOfWeek.<span class="hljs-title function_">group</span>();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-29">&#x00a7;</a>
+              </div>
+              <h3 id="define-chart-attributes">Define Chart Attributes</h3>
+<p>Define chart attributes using fluent methods. See the
+<a href="https://dc-js.github.io/dc.js/docs/html/">dc.js API Reference</a> for more information</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-30">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-30">&#x00a7;</a>
+              </div>
+              <h4 id="bubble-chart">Bubble Chart</h4>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-31">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-31">&#x00a7;</a>
+              </div>
+              <p>Create a bubble chart and use the given css selector as anchor. You can also specify
+an optional chart group for this chart to be scoped within. When a chart belongs
+to a specific group then any interaction with the chart will only trigger redraws
+on charts within the same chart group.
+<br>API: <a href="https://dc-js.github.io/dc.js/docs/html/BubbleChart.html">Bubble Chart</a></p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-32">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-32">&#x00a7;</a>
+              </div>
+              <p>(<em>optional</em>) define chart width, <code>default = 200</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    yearlyBubbleChart <span class="hljs-comment">/* dc.bubbleChart(&#x27;#yearly-bubble-chart&#x27;, &#x27;chartGroup&#x27;) */</span>
+        .<span class="hljs-title function_">configure</span>({
+            <span class="hljs-attr">width</span>: <span class="hljs-number">990</span>,
+            <span class="hljs-attr">height</span>: <span class="hljs-number">250</span>,
+        })
+        .<span class="hljs-title function_">configure</span>({</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-33">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-33">&#x00a7;</a>
+              </div>
+              <p>(<em>optional</em>) define chart transition duration, <code>default = 750</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-attr">transitionDuration</span>: <span class="hljs-number">1500</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-34">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-34">&#x00a7;</a>
+              </div>
+              <h5 id="accessors">Accessors</h5>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-35">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-35">&#x00a7;</a>
+              </div>
+              <p><code>.colorAccessor</code> - the returned value will be passed to the <code>.colors()</code> scale to determine a fill color</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-attr">colorAccessor</span>: <span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> d.<span class="hljs-property">value</span>.<span class="hljs-property">absGain</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-36">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-36">&#x00a7;</a>
+              </div>
+              <p><code>.keyAccessor</code> - the <code>X</code> value will be passed to the <code>.x()</code> scale to determine pixel location</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-attr">keyAccessor</span>: <span class="hljs-function"><span class="hljs-params">p</span> =&gt;</span> p.<span class="hljs-property">value</span>.<span class="hljs-property">absGain</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-37">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-37">&#x00a7;</a>
+              </div>
+              <p><code>.radiusValueAccessor</code> - the value will be passed to the <code>.r()</code> scale to determine radius size;
+  by default this maps linearly to [0,100]</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-attr">radiusValueAccessor</span>: <span class="hljs-function"><span class="hljs-params">p</span> =&gt;</span> p.<span class="hljs-property">value</span>.<span class="hljs-property">fluctuationPercentage</span>,
+
+            <span class="hljs-attr">maxBubbleRelativeSize</span>: <span class="hljs-number">0.3</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-38">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-38">&#x00a7;</a>
+              </div>
+              <p><code>.elasticY</code> and <code>.elasticX</code> determine whether the chart should rescale each axis to fit the data.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-attr">elasticY</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">elasticX</span>: <span class="hljs-literal">true</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-39">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-39">&#x00a7;</a>
+              </div>
+              <p><code>.yAxisPadding</code> and <code>.xAxisPadding</code> add padding to data above and below their max values in the same unit
+domains as the Accessors.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-attr">yAxisPadding</span>: <span class="hljs-number">100</span>,
+            <span class="hljs-attr">xAxisPadding</span>: <span class="hljs-number">500</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-40">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-40">&#x00a7;</a>
+              </div>
+              <p>(<em>optional</em>) render horizontal grid lines, <code>default=false</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-attr">renderHorizontalGridLines</span>: <span class="hljs-literal">true</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-41">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-41">&#x00a7;</a>
+              </div>
+              <p>(<em>optional</em>) render vertical grid lines, <code>default=false</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-attr">renderVerticalGridLines</span>: <span class="hljs-literal">true</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-42">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-42">&#x00a7;</a>
+              </div>
+              <h5 id="labels-and--titles">Labels and  Titles</h5>
+<p>Labels are displayed on the chart for each bubble. Titles displayed on mouseover.
+(<em>optional</em>) whether chart should render labels, <code>default = true</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-attr">renderLabel</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">label</span>: <span class="hljs-function"><span class="hljs-params">p</span> =&gt;</span> p.<span class="hljs-property">key</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-43">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-43">&#x00a7;</a>
+              </div>
+              <p>(<em>optional</em>) whether chart should render titles, <code>default = false</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-attr">renderTitle</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">title</span>: <span class="hljs-function"><span class="hljs-params">p</span> =&gt;</span>
+                [
+                    p.<span class="hljs-property">key</span>,
+                    <span class="hljs-string">`Index Gain: <span class="hljs-subst">${numberFormat(p.value.absGain)}</span>`</span>,
+                    <span class="hljs-string">`Index Gain in Percentage: <span class="hljs-subst">${numberFormat(p.value.percentageGain)}</span>%`</span>,
+                    <span class="hljs-string">`Fluctuation / Index Ratio: <span class="hljs-subst">${numberFormat(p.value.fluctuationPercentage)}</span>%`</span>,
+                ].<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;\n&#x27;</span>),
+        })
+        .<span class="hljs-title function_">dataProvider</span>(
+            <span class="hljs-keyword">new</span> dc.<span class="hljs-title class_">CFSimpleAdapter</span>({
+                <span class="hljs-attr">dimension</span>: yearlyDimension,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-44">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-44">&#x00a7;</a>
+              </div>
+              <p>The bubble chart expects the groups are reduced to multiple values which are used
+to generate x, y, and radius for each key (bubble) in the group</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-attr">group</span>: yearlyPerformanceGroup,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-45">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-45">&#x00a7;</a>
+              </div>
+              <p><code>.valueAccessor</code> - the <code>Y</code> value will be passed to the <code>.y()</code> scale to determine pixel location</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-attr">valueAccessor</span>: <span class="hljs-function"><span class="hljs-params">p</span> =&gt;</span> p.<span class="hljs-property">value</span>.<span class="hljs-property">percentageGain</span>,
+            })
+        )
+        .<span class="hljs-title function_">margins</span>({ <span class="hljs-attr">top</span>: <span class="hljs-number">10</span>, <span class="hljs-attr">right</span>: <span class="hljs-number">50</span>, <span class="hljs-attr">bottom</span>: <span class="hljs-number">30</span>, <span class="hljs-attr">left</span>: <span class="hljs-number">40</span> })</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-46">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-46">&#x00a7;</a>
+              </div>
+              <p>(<em>optional</em>) define color function or array for bubbles: <a href="http://colorbrewer2.org/">ColorBrewer</a>
+(optional) define color domain to match your data domain if you want to bind data or color</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        .<span class="hljs-title function_">colorScale</span>(<span class="hljs-keyword">new</span> d3.<span class="hljs-title function_">scaleQuantize</span>(d3.<span class="hljs-property">schemeRdYlGn</span>[<span class="hljs-number">9</span>]).<span class="hljs-title function_">domain</span>([-<span class="hljs-number">500</span>, <span class="hljs-number">500</span>]))</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-47">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-47">&#x00a7;</a>
+              </div>
+              <p>Accessor functions are applied to each value returned by the grouping</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        .<span class="hljs-title function_">x</span>(d3.<span class="hljs-title function_">scaleLinear</span>().<span class="hljs-title function_">domain</span>([-<span class="hljs-number">2500</span>, <span class="hljs-number">2500</span>]))
+        .<span class="hljs-title function_">y</span>(d3.<span class="hljs-title function_">scaleLinear</span>().<span class="hljs-title function_">domain</span>([-<span class="hljs-number">100</span>, <span class="hljs-number">100</span>]))
+        .<span class="hljs-title function_">r</span>(d3.<span class="hljs-title function_">scaleLinear</span>().<span class="hljs-title function_">domain</span>([<span class="hljs-number">0</span>, <span class="hljs-number">4000</span>]))</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-48">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-48">&#x00a7;</a>
+              </div>
+              <h5 id="elastic-scaling">Elastic Scaling</h5>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-49">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-49">&#x00a7;</a>
+              </div>
+              <p>(<em>optional</em>) render an axis label below the x axis</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        .<span class="hljs-title function_">xAxisLabel</span>(<span class="hljs-string">&#x27;Index Gain&#x27;</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-50">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-50">&#x00a7;</a>
+              </div>
+              <p>(<em>optional</em>) render a vertical axis lable left of the y axis</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        .<span class="hljs-title function_">yAxisLabel</span>(<span class="hljs-string">&#x27;Index Gain %&#x27;</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-51">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-51">&#x00a7;</a>
+              </div>
+              <h4 id="customize-axes">Customize Axes</h4>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-52">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-52">&#x00a7;</a>
+              </div>
+              <p>Set a custom tick format. Both <code>.yAxis()</code> and <code>.xAxis()</code> return an axis object,
+so any additional method chaining applies to the axis, not the chart.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    yearlyBubbleChart.<span class="hljs-title function_">yAxis</span>().<span class="hljs-title function_">tickFormat</span>(<span class="hljs-function"><span class="hljs-params">v</span> =&gt;</span> <span class="hljs-string">`<span class="hljs-subst">${v}</span>%`</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-53">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-53">&#x00a7;</a>
+              </div>
+              <h4 id="piedonut-charts">Pie/Donut Charts</h4>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-54">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-54">&#x00a7;</a>
+              </div>
+              <p>Create a pie chart and use the given css selector as anchor. You can also specify
+an optional chart group for this chart to be scoped within. When a chart belongs
+to a specific group then any interaction with such chart will only trigger redraw
+on other charts within the same chart group.
+<br>API: <a href="https://dc-js.github.io/dc.js/docs/html/PieChart.html">Pie Chart</a></p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-55">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-55">&#x00a7;</a>
+              </div>
+              <p>(<em>optional</em>) define chart width, <code>default = 200</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    gainOrLossChart <span class="hljs-comment">/* dc.pieChart(&#x27;#gain-loss-chart&#x27;, &#x27;chartGroup&#x27;) */</span>
+        .<span class="hljs-title function_">configure</span>({
+            <span class="hljs-attr">width</span>: <span class="hljs-number">180</span>,
+            <span class="hljs-attr">height</span>: <span class="hljs-number">180</span>,
+        })
+        .<span class="hljs-title function_">configure</span>({</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-56">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-56">&#x00a7;</a>
+              </div>
+              <p>Define pie radius</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-attr">radius</span>: <span class="hljs-number">80</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-57">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-57">&#x00a7;</a>
+              </div>
+              <p>(<em>optional</em>) by default pie chart will use <code>group.key</code> as its label but you can overwrite it with a closure.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-attr">label</span>: <span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> {
+                <span class="hljs-keyword">if</span> (gainOrLossChart.<span class="hljs-title function_">hasFilter</span>() &amp;&amp; !gainOrLossChart.<span class="hljs-title function_">hasFilter</span>(d.<span class="hljs-property">key</span>)) {
+                    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${d.key}</span>(0%)`</span>;
+                }
+                <span class="hljs-keyword">let</span> label = d.<span class="hljs-property">key</span>;
+                <span class="hljs-keyword">if</span> (all.<span class="hljs-title function_">value</span>()) {
+                    label += <span class="hljs-string">`(<span class="hljs-subst">${<span class="hljs-built_in">Math</span>.floor((d.value / all.value()) * <span class="hljs-number">100</span>)}</span>%)`</span>;
+                }
+                <span class="hljs-keyword">return</span> label;
+            },
+        })
+        .<span class="hljs-title function_">dataProvider</span>(
+            <span class="hljs-keyword">new</span> dc.<span class="hljs-title class_">CFSimpleAdapter</span>({</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-58">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-58">&#x00a7;</a>
+              </div>
+              <p>Set dimension</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-attr">dimension</span>: gainOrLoss,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-59">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-59">&#x00a7;</a>
+              </div>
+              <p>Set group</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-attr">group</span>: gainOrLossGroup,
+            })
+        );
+    <span class="hljs-comment">/*
+</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-60">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-60">&#x00a7;</a>
+              </div>
+              <p>(<em>optional</em>) whether chart should render labels, <code>default = true</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        .<span class="hljs-title function_">renderLabel</span>(<span class="hljs-literal">true</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-61">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-61">&#x00a7;</a>
+              </div>
+              <p>(<em>optional</em>) if inner radius is used then a donut chart will be generated instead of pie chart</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        .<span class="hljs-title function_">innerRadius</span>(<span class="hljs-number">40</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-62">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-62">&#x00a7;</a>
+              </div>
+              <p>(<em>optional</em>) define chart transition duration, <code>default = 350</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        .<span class="hljs-title function_">transitionDuration</span>(<span class="hljs-number">500</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-63">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-63">&#x00a7;</a>
+              </div>
+              <p>(<em>optional</em>) define color array for slices</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        .<span class="hljs-title function_">colors</span>([<span class="hljs-string">&#x27;#3182bd&#x27;</span>, <span class="hljs-string">&#x27;#6baed6&#x27;</span>, <span class="hljs-string">&#x27;#9ecae1&#x27;</span>, <span class="hljs-string">&#x27;#c6dbef&#x27;</span>, <span class="hljs-string">&#x27;#dadaeb&#x27;</span>])</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-64">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-64">&#x00a7;</a>
+              </div>
+              <p>(<em>optional</em>) define color domain to match your data domain if you want to bind data or color</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        .<span class="hljs-title function_">colorDomain</span>([-<span class="hljs-number">1750</span>, <span class="hljs-number">1644</span>])</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-65">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-65">&#x00a7;</a>
+              </div>
+              <p>(<em>optional</em>) define color value accessor</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        .<span class="hljs-title function_">colorAccessor</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">d, i</span>){<span class="hljs-keyword">return</span> d.<span class="hljs-property">value</span>;})
+        */
+
+    quarterChart <span class="hljs-comment">/* dc.pieChart(&#x27;#quarter-chart&#x27;, &#x27;chartGroup&#x27;) */</span>
+        .<span class="hljs-title function_">configure</span>({
+            <span class="hljs-attr">width</span>: <span class="hljs-number">180</span>,
+            <span class="hljs-attr">height</span>: <span class="hljs-number">180</span>,
+        })
+        .<span class="hljs-title function_">configure</span>({
+            <span class="hljs-attr">radius</span>: <span class="hljs-number">80</span>,
+            <span class="hljs-attr">innerRadius</span>: <span class="hljs-number">30</span>,
+        })
+        .<span class="hljs-title function_">dataProvider</span>(
+            <span class="hljs-keyword">new</span> dc.<span class="hljs-title class_">CFSimpleAdapter</span>({
+                <span class="hljs-attr">dimension</span>: quarter,
+                <span class="hljs-attr">group</span>: quarterGroup,
+            })
+        );</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-66">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-66">&#x00a7;</a>
+              </div>
+              <h4 id="row-chart">Row Chart</h4>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-67">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-67">&#x00a7;</a>
+              </div>
+              <p>Create a row chart and use the given css selector as anchor. You can also specify
+an optional chart group for this chart to be scoped within. When a chart belongs
+to a specific group then any interaction with such chart will only trigger redraw
+on other charts within the same chart group.
+<br>API: <a href="https://dc-js.github.io/dc.js/docs/html/RowChart.html">Row Chart</a></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    dayOfWeekChart <span class="hljs-comment">/* dc.rowChart(&#x27;#day-of-week-chart&#x27;, &#x27;chartGroup&#x27;) */</span>
+        .<span class="hljs-title function_">configure</span>({
+            <span class="hljs-attr">width</span>: <span class="hljs-number">180</span>,
+            <span class="hljs-attr">height</span>: <span class="hljs-number">180</span>,
+        })
+        .<span class="hljs-title function_">configure</span>({
+            <span class="hljs-attr">label</span>: <span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> d.<span class="hljs-property">key</span>.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;.&#x27;</span>)[<span class="hljs-number">1</span>],</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-68">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-68">&#x00a7;</a>
+              </div>
+              <p>Title sets the row text</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-attr">title</span>: <span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> d.<span class="hljs-property">value</span>,
+            <span class="hljs-attr">elasticX</span>: <span class="hljs-literal">true</span>,
+        })
+        .<span class="hljs-title function_">dataProvider</span>(
+            <span class="hljs-keyword">new</span> dc.<span class="hljs-title class_">CFSimpleAdapter</span>({
+                <span class="hljs-attr">group</span>: dayOfWeekGroup,
+                <span class="hljs-attr">dimension</span>: dayOfWeek,
+            })
+        )
+        .<span class="hljs-title function_">margins</span>({ <span class="hljs-attr">top</span>: <span class="hljs-number">20</span>, <span class="hljs-attr">left</span>: <span class="hljs-number">10</span>, <span class="hljs-attr">right</span>: <span class="hljs-number">10</span>, <span class="hljs-attr">bottom</span>: <span class="hljs-number">20</span> })</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-69">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-69">&#x00a7;</a>
+              </div>
+              <p>Assign colors to each value in the x scale domain</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        .<span class="hljs-title function_">ordinalColors</span>([<span class="hljs-string">&#x27;#3182bd&#x27;</span>, <span class="hljs-string">&#x27;#6baed6&#x27;</span>, <span class="hljs-string">&#x27;#9ecae1&#x27;</span>, <span class="hljs-string">&#x27;#c6dbef&#x27;</span>, <span class="hljs-string">&#x27;#dadaeb&#x27;</span>]);
+
+    dayOfWeekChart.<span class="hljs-title function_">xAxis</span>().<span class="hljs-title function_">ticks</span>(<span class="hljs-number">4</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-70">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-70">&#x00a7;</a>
+              </div>
+              <h4 id="bar-chart">Bar Chart</h4>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-71">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-71">&#x00a7;</a>
+              </div>
+              <p>Create a bar chart and use the given css selector as anchor. You can also specify
+an optional chart group for this chart to be scoped within. When a chart belongs
+to a specific group then any interaction with such chart will only trigger redraw
+on other charts within the same chart group.
+<br>API: <a href="https://dc-js.github.io/dc.js/docs/html/BarChart.html">Bar Chart</a></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    fluctuationChart <span class="hljs-comment">/* dc.barChart(&#x27;#volume-month-chart&#x27;, &#x27;chartGroup&#x27;) */</span>
+        .<span class="hljs-title function_">configure</span>({
+            <span class="hljs-attr">width</span>: <span class="hljs-number">420</span>,
+            <span class="hljs-attr">height</span>: <span class="hljs-number">180</span>,
+        })
+        .<span class="hljs-title function_">configure</span>({
+            <span class="hljs-attr">elasticY</span>: <span class="hljs-literal">true</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-72">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-72">&#x00a7;</a>
+              </div>
+              <p>(<em>optional</em>) whether bar should be center to its x value. Not needed for ordinal chart, <code>default=false</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-attr">centerBar</span>: <span class="hljs-literal">true</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-73">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-73">&#x00a7;</a>
+              </div>
+              <p>(<em>optional</em>) set filter brush rounding</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-attr">round</span>: <span class="hljs-title class_">Math</span>.<span class="hljs-property">floor</span>,
+            <span class="hljs-attr">alwaysUseRounding</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">renderHorizontalGridLines</span>: <span class="hljs-literal">true</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-74">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-74">&#x00a7;</a>
+              </div>
+              <p>Customize the filter displayed in the control span</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-attr">filterPrinter</span>: <span class="hljs-function"><span class="hljs-params">filters</span> =&gt;</span> {
+                <span class="hljs-keyword">const</span> filter = filters[<span class="hljs-number">0</span>];
+                <span class="hljs-keyword">let</span> s = <span class="hljs-string">&#x27;&#x27;</span>;
+                s += <span class="hljs-string">`<span class="hljs-subst">${numberFormat(filter[<span class="hljs-number">0</span>])}</span>% -&gt; <span class="hljs-subst">${numberFormat(filter[<span class="hljs-number">1</span>])}</span>%`</span>;
+                <span class="hljs-keyword">return</span> s;
+            },
+        })
+        .<span class="hljs-title function_">dataProvider</span>(
+            <span class="hljs-keyword">new</span> dc.<span class="hljs-title class_">CFMultiAdapter</span>({
+                <span class="hljs-attr">dimension</span>: fluctuation,
+                <span class="hljs-attr">group</span>: fluctuationGroup,
+            })
+        )
+        .<span class="hljs-title function_">margins</span>({ <span class="hljs-attr">top</span>: <span class="hljs-number">10</span>, <span class="hljs-attr">right</span>: <span class="hljs-number">50</span>, <span class="hljs-attr">bottom</span>: <span class="hljs-number">30</span>, <span class="hljs-attr">left</span>: <span class="hljs-number">40</span> })</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-75">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-75">&#x00a7;</a>
+              </div>
+              <p>(<em>optional</em>) set gap between bars manually in px, <code>default=2</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        .<span class="hljs-title function_">gap</span>(<span class="hljs-number">1</span>)
+        .<span class="hljs-title function_">x</span>(d3.<span class="hljs-title function_">scaleLinear</span>().<span class="hljs-title function_">domain</span>([-<span class="hljs-number">25</span>, <span class="hljs-number">25</span>]));</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-76">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-76">&#x00a7;</a>
+              </div>
+              <p>Customize axes</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    fluctuationChart.<span class="hljs-title function_">xAxis</span>().<span class="hljs-title function_">tickFormat</span>(<span class="hljs-function"><span class="hljs-params">v</span> =&gt;</span> <span class="hljs-string">`<span class="hljs-subst">${v}</span>%`</span>);
+    fluctuationChart.<span class="hljs-title function_">yAxis</span>().<span class="hljs-title function_">ticks</span>(<span class="hljs-number">5</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-77">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-77">&#x00a7;</a>
+              </div>
+              <h4 id="stacked-area-chart">Stacked Area Chart</h4>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-78">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-78">&#x00a7;</a>
+              </div>
+              <p>Specify an area chart by using a line chart with <code>.renderArea(true)</code>.
+<br>API: <a href="https://dc-js.github.io/dc.js/docs/html/StackMixin.html">Stack Mixin</a>,
+<a href="https://dc-js.github.io/dc.js/docs/html/LineChart.html">Line Chart</a></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    moveChart <span class="hljs-comment">/* dc.lineChart(&#x27;#monthly-move-chart&#x27;, &#x27;chartGroup&#x27;) */</span>
+        .<span class="hljs-title function_">configure</span>({
+            <span class="hljs-attr">width</span>: <span class="hljs-number">990</span>,
+            <span class="hljs-attr">height</span>: <span class="hljs-number">200</span>,
+        })
+        .<span class="hljs-title function_">configure</span>({
+            <span class="hljs-attr">transitionDuration</span>: <span class="hljs-number">1000</span>,
+            <span class="hljs-attr">round</span>: d3.<span class="hljs-property">timeMonth</span>.<span class="hljs-property">round</span>,
+            <span class="hljs-attr">renderArea</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">elasticY</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">renderHorizontalGridLines</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">xUnits</span>: d3.<span class="hljs-property">timeMonths</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-79">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-79">&#x00a7;</a>
+              </div>
+              <p>Switching off brush, switching on autoFocus, and making mouseZoomable makes it a Focus chart</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-attr">mouseZoomable</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">autoFocus</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">brushOn</span>: <span class="hljs-literal">false</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-80">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-80">&#x00a7;</a>
+              </div>
+              <p>Title can be called by any stack layer.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-attr">title</span>: <span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> {
+                <span class="hljs-keyword">let</span> value = d.<span class="hljs-property">value</span>.<span class="hljs-property">avg</span> ? d.<span class="hljs-property">value</span>.<span class="hljs-property">avg</span> : d.<span class="hljs-property">value</span>;
+                <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isNaN</span>(value)) {
+                    value = <span class="hljs-number">0</span>;
+                }
+                <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${dateFormat(d.key)}</span>\n<span class="hljs-subst">${numberFormat(value)}</span>`</span>;
+            },
+        })
+        .<span class="hljs-title function_">dataProvider</span>(
+            <span class="hljs-keyword">new</span> dc.<span class="hljs-title class_">CFMultiAdapter</span>({
+                <span class="hljs-attr">dimension</span>: moveMonths,
+                <span class="hljs-attr">layers</span>: [</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-81">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-81">&#x00a7;</a>
+              </div>
+              <p>Add the first layer of the stack with group. The <code>name</code> is used for label in legends.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    {
+                        <span class="hljs-attr">group</span>: indexAvgByMonthGroup,
+                        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Monthly Index Average&#x27;</span>,
+                        <span class="hljs-attr">valueAccessor</span>: <span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> d.<span class="hljs-property">value</span>.<span class="hljs-property">avg</span>,
+                    },
+                    {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-82">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-82">&#x00a7;</a>
+              </div>
+              <p>Stack additional layers with <code>.stack</code>. The first paramenter is a new group.
+The second parameter is the series name. The third is a value accessor.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                        <span class="hljs-attr">group</span>: monthlyMoveGroup,
+                        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Monthly Index Move&#x27;</span>,
+                        <span class="hljs-attr">valueAccessor</span>: <span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> d.<span class="hljs-property">value</span>,
+                    },
+                ],
+            })
+        )
+        .<span class="hljs-title function_">margins</span>({ <span class="hljs-attr">top</span>: <span class="hljs-number">30</span>, <span class="hljs-attr">right</span>: <span class="hljs-number">50</span>, <span class="hljs-attr">bottom</span>: <span class="hljs-number">25</span>, <span class="hljs-attr">left</span>: <span class="hljs-number">40</span> })</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-83">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-83">&#x00a7;</a>
+              </div>
+              <p>Specify a “range chart” to link its brush extent with the zoom of the current “focus chart”.
+    .rangeChart(volumeChart)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        .<span class="hljs-title function_">x</span>(d3.<span class="hljs-title function_">scaleTime</span>().<span class="hljs-title function_">domain</span>([<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-number">1985</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>), <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-number">2012</span>, <span class="hljs-number">11</span>, <span class="hljs-number">31</span>)]))</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-84">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-84">&#x00a7;</a>
+              </div>
+              <h5 id="legend">Legend</h5>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-85">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-85">&#x00a7;</a>
+              </div>
+              <p>Position the legend relative to the chart origin and specify items’ height and separation.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        .<span class="hljs-title function_">legend</span>(<span class="hljs-keyword">new</span> dc.<span class="hljs-title class_">Legend</span>().<span class="hljs-title function_">x</span>(<span class="hljs-number">800</span>).<span class="hljs-title function_">y</span>(<span class="hljs-number">10</span>).<span class="hljs-title function_">itemHeight</span>(<span class="hljs-number">13</span>).<span class="hljs-title function_">gap</span>(<span class="hljs-number">5</span>));</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-86">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-86">&#x00a7;</a>
+              </div>
+              <h4 id="range-chart">Range Chart</h4>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-87">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-87">&#x00a7;</a>
+              </div>
+              <p>Since this bar chart is specified as “range chart” for the area chart, its brush extent
+will always match the zoom of the area chart.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    volumeChart <span class="hljs-comment">/* dc.barChart(&#x27;#monthly-volume-chart&#x27;, &#x27;chartGroup&#x27;); */</span>
+        .<span class="hljs-title function_">configure</span>({
+            <span class="hljs-attr">width</span>: <span class="hljs-number">990</span>,
+            <span class="hljs-attr">height</span>: <span class="hljs-number">40</span>,
+        })
+        .<span class="hljs-title function_">configure</span>({
+            <span class="hljs-attr">round</span>: d3.<span class="hljs-property">timeMonth</span>.<span class="hljs-property">round</span>,
+            <span class="hljs-attr">alwaysUseRounding</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">xUnits</span>: d3.<span class="hljs-property">timeMonths</span>,
+            <span class="hljs-attr">centerBar</span>: <span class="hljs-literal">true</span>,
+        })
+        .<span class="hljs-title function_">dataProvider</span>(
+            <span class="hljs-keyword">new</span> dc.<span class="hljs-title class_">CFMultiAdapter</span>({
+                <span class="hljs-attr">dimension</span>: moveMonths,
+                <span class="hljs-attr">group</span>: volumeByMonthGroup,
+            })
+        )
+        .<span class="hljs-title function_">margins</span>({ <span class="hljs-attr">top</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">right</span>: <span class="hljs-number">50</span>, <span class="hljs-attr">bottom</span>: <span class="hljs-number">20</span>, <span class="hljs-attr">left</span>: <span class="hljs-number">40</span> })
+        .<span class="hljs-title function_">gap</span>(<span class="hljs-number">1</span>)
+        .<span class="hljs-title function_">x</span>(d3.<span class="hljs-title function_">scaleTime</span>().<span class="hljs-title function_">domain</span>([<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-number">1985</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>), <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-number">2012</span>, <span class="hljs-number">11</span>, <span class="hljs-number">31</span>)]));</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-88">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-88">&#x00a7;</a>
+              </div>
+              <h4 id="data-count">Data Count</h4>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-89">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-89">&#x00a7;</a>
+              </div>
+              <p>Create a data count widget and use the given css selector as anchor. You can also specify
+an optional chart group for this chart to be scoped within. When a chart belongs
+to a specific group then any interaction with such chart will only trigger redraw
+on other charts within the same chart group.
+<br>API: <a href="https://dc-js.github.io/dc.js/docs/html/DataCount.html">Data Count Widget</a></p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;dc-data-count&#x27;</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;filter-count&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+ selected out of <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;total-count&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> records.
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+    nasdaqCount <span class="hljs-comment">/* dc.dataCount(&#x27;.dc-data-count&#x27;, &#x27;chartGroup&#x27;); */</span>
+        .<span class="hljs-title function_">configure</span>({</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-90">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-90">&#x00a7;</a>
+              </div>
+              <p>(<em>optional</em>) <code>.html</code> sets different html when some records or all records are selected.
+<code>.html</code> replaces everything in the anchor with the html given using the following function.
+<code>%filter-count</code> and <code>%total-count</code> are replaced with the values obtained.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-attr">html</span>: {
+                <span class="hljs-attr">some</span>:
+                    <span class="hljs-string">&#x27;&lt;strong&gt;%filter-count&lt;/strong&gt; selected out of &lt;strong&gt;%total-count&lt;/strong&gt; records&#x27;</span> +
+                    <span class="hljs-string">&quot; | &lt;a href=&#x27;javascript:chartGroup.filterAll(); chartGroup.redrawAll();&#x27;&gt;Reset All&lt;/a&gt;&quot;</span>,
+                <span class="hljs-attr">all</span>: <span class="hljs-string">&#x27;All records selected. Please click on the graph to apply filters.&#x27;</span>,
+            },
+        })
+        .<span class="hljs-title function_">crossfilter</span>(ndx)
+        .<span class="hljs-title function_">groupAll</span>(all);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-91">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-91">&#x00a7;</a>
+              </div>
+              <h4 id="data-table">Data Table</h4>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-92">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-92">&#x00a7;</a>
+              </div>
+              <p>Create a data table widget and use the given css selector as anchor. You can also specify
+an optional chart group for this chart to be scoped within. When a chart belongs
+to a specific group then any interaction with such chart will only trigger redraw
+on other charts within the same chart group.
+<br>API: <a href="https://dc-js.github.io/dc.js/docs/html/DataTable.html">Data Table Widget</a></p>
+<p>You can statically define the headers like in</p>
+<pre><code class="language-html">   <span class="hljs-comment">&lt;!-- anchor div for data table --&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;data-table&#x27;</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- create a custom header --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;header&#x27;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Date<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Open<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Close<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Change<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Volume<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- data rows will filled in here --&gt;</span>
+   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>or do it programmatically using <code>.columns()</code>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+    nasdaqTable <span class="hljs-comment">/* dc.dataTable(&#x27;.dc-data-table&#x27;, &#x27;chartGroup&#x27;) */</span>
+        .<span class="hljs-title function_">configure</span>({</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-93">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-93">&#x00a7;</a>
+              </div>
+              <p>Specify a section function to nest rows of the table</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-attr">section</span>: <span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> {
+                <span class="hljs-keyword">const</span> format = d3.<span class="hljs-title function_">format</span>(<span class="hljs-string">&#x27;02d&#x27;</span>);
+                <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${d.dd.getFullYear()}</span>/<span class="hljs-subst">${format(d.dd.getMonth() + <span class="hljs-number">1</span>)}</span>`</span>;
+            },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-94">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-94">&#x00a7;</a>
+              </div>
+              <p>(<em>optional</em>) max number of records to be shown, <code>default = 25</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-attr">size</span>: <span class="hljs-number">10</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-95">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-95">&#x00a7;</a>
+              </div>
+              <p>There are several ways to specify the columns; see the data-table documentation.
+This code demonstrates generating the column header automatically based on the columns.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-attr">columns</span>: [</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-96">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-96">&#x00a7;</a>
+              </div>
+              <p>Use the <code>d.date</code> field; capitalized automatically</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-string">&#x27;date&#x27;</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-97">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-97">&#x00a7;</a>
+              </div>
+              <p>Use <code>d.open</code>, <code>d.close</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-string">&#x27;open&#x27;</span>,
+                <span class="hljs-string">&#x27;close&#x27;</span>,
+                {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-98">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-98">&#x00a7;</a>
+              </div>
+              <p>Specify a custom format for column ‘Change’ by using a label with a function.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Change&#x27;</span>,
+                    <span class="hljs-attr">format</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">d</span>) {
+                        <span class="hljs-keyword">return</span> <span class="hljs-title function_">numberFormat</span>(d.<span class="hljs-property">close</span> - d.<span class="hljs-property">open</span>);
+                    },
+                },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-99">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-99">&#x00a7;</a>
+              </div>
+              <p>Use <code>d.volume</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-string">&#x27;volume&#x27;</span>,
+            ],</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-100">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-100">&#x00a7;</a>
+              </div>
+              <p>(<em>optional</em>) sort using the given field, <code>default = function(d){return d;}</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-attr">sortBy</span>: <span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> d.<span class="hljs-property">dd</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-101">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-101">&#x00a7;</a>
+              </div>
+              <p>(<em>optional</em>) sort order, <code>default = d3.ascending</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-attr">order</span>: d3.<span class="hljs-property">ascending</span>,
+        })
+        .<span class="hljs-title function_">dataProvider</span>(
+            <span class="hljs-keyword">new</span> dc.<span class="hljs-title class_">CFSimpleAdapter</span>({
+                <span class="hljs-attr">dimension</span>: dateDimension,
+            })
+        )</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-102">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-102">&#x00a7;</a>
+              </div>
+              <p>(<em>optional</em>) custom renderlet to post-process chart using <a href="http://d3js.org">D3</a></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        .<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;renderlet&#x27;</span>, <span class="hljs-function"><span class="hljs-params">table</span> =&gt;</span> {
+            table.<span class="hljs-title function_">selectAll</span>(<span class="hljs-string">&#x27;.dc-table-group&#x27;</span>).<span class="hljs-title function_">classed</span>(<span class="hljs-string">&#x27;info&#x27;</span>, <span class="hljs-literal">true</span>);
+        });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-103">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-103">&#x00a7;</a>
+              </div>
+              <h4 id="rendering">Rendering</h4>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-104">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-104">&#x00a7;</a>
+              </div>
+              <p>simply call <code>.renderAll()</code> to render all charts on the page</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    chartGroup.<span class="hljs-title function_">renderAll</span>();
+    <span class="hljs-comment">/*
+</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-105">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-105">&#x00a7;</a>
+              </div>
+              <p>Or you can render charts belonging to a specific chart group</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    dc.<span class="hljs-title function_">renderAll</span>(<span class="hljs-string">&#x27;group&#x27;</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-106">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-106">&#x00a7;</a>
+              </div>
+              <p>Once rendered you can call <code>.redrawAll()</code> to update charts incrementally when the data
+changes, without re-rendering everything</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    dc.<span class="hljs-title function_">redrawAll</span>();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-107">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-107">&#x00a7;</a>
+              </div>
+              <p>Or you can choose to redraw only those charts associated with a specific chart group</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    dc.<span class="hljs-title function_">redrawAll</span>(<span class="hljs-string">&#x27;group&#x27;</span>);
+    */
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-108">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-108">&#x00a7;</a>
+              </div>
+              <h4 id="versions">Versions</h4>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-109">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-109">&#x00a7;</a>
+              </div>
+              <p>Determine the current version of dc with <code>dc.version</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>d3.<span class="hljs-title function_">selectAll</span>(<span class="hljs-string">&#x27;#version&#x27;</span>).<span class="hljs-title function_">text</span>(dc.<span class="hljs-property">version</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-110">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-110">&#x00a7;</a>
+              </div>
+              <p>Determine latest stable version in the repo via Github API</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>d3.<span class="hljs-title function_">json</span>(<span class="hljs-string">&#x27;https://api.github.com/repos/dc-js/dc.js/releases/latest&#x27;</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">latestRelease</span> =&gt;</span> {
+    <span class="hljs-comment">/* eslint camelcase: 0 */</span>
+    d3.<span class="hljs-title function_">selectAll</span>(<span class="hljs-string">&#x27;#latest&#x27;</span>).<span class="hljs-title function_">text</span>(latestRelease.<span class="hljs-property">tag_name</span>);
+});</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
