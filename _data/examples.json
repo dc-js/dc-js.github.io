@@ -1,0 +1,286 @@
+[
+    {
+        "example-name": "adjustable-threshold",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "align-axes",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "area",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "background-drawing",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "bar-extra-line",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "bar-single-select",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "bar",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "boxplot-basic",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "boxplot-enhanced",
+        "difficulty-level": "ninja"
+    },
+    {
+        "example-name": "boxplot-render-data",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "boxplot-time",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "brush-ordinal",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "cap-and-sort-differently",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "cbox-menu",
+        "difficulty-level": "ninja"
+    },
+    {
+        "example-name": "click-limit-on-histogram",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "color-swatch",
+        "difficulty-level": "ninja"
+    },
+    {
+        "example-name": "compare-unfiltered",
+        "difficulty-level": "ninja"
+    },
+    {
+        "example-name": "complex-reduce",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "composite-bar-line",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "composite-brush-multi-dim",
+        "difficulty-level": "ninja"
+    },
+    {
+        "example-name": "composite",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "current-filters",
+        "difficulty-level": "ninja"
+    },
+    {
+        "example-name": "download-table",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "filter-stacks",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "filtering-removing",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "filtering",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "focus-dynamic-data",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "focus-dynamic-interval",
+        "difficulty-level": "ninja"
+    },
+    {
+        "example-name": "focus-ordinal-bar",
+        "difficulty-level": "ninja"
+    },
+    {
+        "example-name": "heat",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "heatmap-filtering",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "horizon-chart",
+        "difficulty-level": "ninja"
+    },
+    {
+        "example-name": "html-legend",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "line",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "linked-filter",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "multi-focus",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "multi-scatter",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "number",
+        "difficulty-level": "ninja"
+    },
+    {
+        "example-name": "ordinal-bar",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "ordinal-line",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "pareto-chart",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "pie-external-labels",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "pie",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "range-series",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "regression",
+        "difficulty-level": "ninja"
+    },
+    {
+        "example-name": "replacing-data",
+        "difficulty-level": "ninja"
+    },
+    {
+        "example-name": "right-axis",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "row-targets",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "row-top-axis",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "row-vertical-line",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "row",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "scatter-brushing",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "scatter-canvas-brushing",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "scatter-canvas-large",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "scatter-series",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "scatter-svg-large",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "scatter",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "select",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "series",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "sparkline",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "splom",
+        "difficulty-level": "ninja"
+    },
+    {
+        "example-name": "stacked-bar",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "sunburst-cat",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "sunburst-equal-radii",
+        "difficulty-level": "beginner"
+    },
+    {
+        "example-name": "sunburst-with-value-accessor",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "sunburst",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "switching-time-intervals",
+        "difficulty-level": "ninja"
+    },
+    {
+        "example-name": "table-on-aggregated-data",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "table-pagination",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "text-filter-widget",
+        "difficulty-level": "intermediate"
+    },
+    {
+        "example-name": "time-intervals",
+        "difficulty-level": "intermediate"
+    }
+]
