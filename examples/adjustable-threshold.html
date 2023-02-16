@@ -1,3 +1,6 @@
+---
+---
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,9 +13,10 @@
       integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
       crossorigin="anonymous"
     />
-    <script type="text/javascript" src="../js/d3.js"></script>
-    <script type="text/javascript" src="../js/crossfilter.js"></script>
-    <script type="text/javascript" src="../js/dc.js"></script>
+    
+    <script type="text/javascript" src="header.js"></script>
+
+    {% include cdn-js-links.html %}
   </head>
 
   <body>
@@ -40,7 +44,7 @@
       <div id="dc-coreAcc-piechart"></div>
       <div id="dc-score-barchart"></div>
 
-      <script type="text/javascript" src="header.js"></script>
+      
       <script type="text/javascript">
         const chartGroup = new dc.ChartGroup();
         const data = [

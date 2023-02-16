@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+---
+---
+
 <html lang="en">
   <head>
     <title>dc.js - Area Chart Example</title>
@@ -10,16 +12,20 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" type="text/css" href="../css/dc.css" />
+
+    <script type="text/javascript" src="header.js"></script>
+
+    {% include cdn-js-links.html %}
+
+    
   </head>
   <body>
     <div class="container">
       <div id="header"></div>
       <div id="test"></div>
 
-      <script type="text/javascript" src="header.js"></script>
-      <script type="text/javascript" src="../js/d3.js"></script>
-      <script type="text/javascript" src="../js/crossfilter.js"></script>
-      <script type="text/javascript" src="../js/dc.js"></script>
+      
+
       <script type="text/javascript">
         const chartGroup = new dc.ChartGroup();
         const chart = new dc.LineChart('#test', chartGroup);
