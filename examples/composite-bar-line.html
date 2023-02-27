@@ -1,3 +1,6 @@
+---
+---
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,6 +14,11 @@
     />
     <!-- <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" /> -->
     <link rel="stylesheet" type="text/css" href="../css/dc.css" />
+
+    <script type="text/javascript" src="header.js"></script>
+
+    {% include cdn-js-links.html %}
+
     <style>
       circle.dot {
         fill-opacity: 1 !important;
@@ -22,10 +30,6 @@
       <div id="header"></div>
       <div id="test_composed"></div>
 
-      <script type="text/javascript" src="header.js"></script>
-      <script type="text/javascript" src="../js/d3.js"></script>
-      <script type="text/javascript" src="../js/crossfilter.js"></script>
-      <script type="text/javascript" src="../js/dc.js"></script>
       <script type="text/javascript">
         const chartGroup = new dc.ChartGroup();
         //  var composite = dc.compositeChart("#test_composed");

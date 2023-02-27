@@ -19,6 +19,11 @@ description: >- # this means to ignore newlines until "baseurl:"
   dc.js.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
+cdn:
+  js: 
+    dc: "https://cdn.jsdelivr.net/gh/dc-js/dc-js.github.io/js/dc.min.js"
+    crossfilter: "https://cdnjs.cloudflare.com/ajax/libs/crossfilter2/1.5.4/crossfilter.min.js"
+    d3: "https://cdnjs.cloudflare.com/ajax/libs/d3/7.6.1/d3.min.js"
 
 # Build settings
 markdown: kramdown
@@ -37,3 +42,5 @@ theme: minima
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+
