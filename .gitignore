@@ -4,3 +4,8 @@ _site
 
 # ignore IDE files
 .idea
+
+# API docs generation
+api-docs-gen/node_modules
+api-docs-gen/src
+api-docs-gen/tsconfig.json

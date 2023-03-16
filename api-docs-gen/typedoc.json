@@ -1,0 +1,29 @@
+{
+  "out": "../api-docs",
+  "readme": "docs-src/welcome.base.md",
+  "entryPoints": ["src/index.ts"],
+  "excludeExternals": true,
+  "excludePrivate": true,
+  "defaultCategory": "Standard",
+  "categoryOrder": ["Standard", "Intermediate", "Ninja"],
+  "validation": {
+    "invalidLink": true
+  },
+  "pluginPages": {
+    "source": "docs-src",
+    "pages": [
+      {
+        "title": "dc@v5 Migration Guide",
+        "source": "dc-v5-upgrade-guide.md"
+      },
+      {
+        "title": "dc@v4 Migration Guide",
+        "source": "dc-v4-upgrade-guide.md"
+      },
+      {
+        "title": "dc@v3 Migration Guide",
+        "source": "dc-v3-upgrade-guide.md"
+      }
+    ]
+  }
+}
