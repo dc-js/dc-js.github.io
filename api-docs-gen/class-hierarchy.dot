@@ -1,0 +1,64 @@
+digraph dcHierarchy {
+graph [rankdir=LR, ranksep=0.35]
+node [fontname="sans-serif", fontsize=9.5, margin="0.05,0.05"]
+node [style=filled, fillcolor=palegreen]
+{ node [style=filled, fillcolor=lightblue] BaseMixin ColorMixin MarginMixin BubbleMixin CoordinateGridMixin StackMixin }
+
+BaseMixin [href = "classes/BaseMixin.html"]
+BubbleMixin [href = "functions/BubbleMixin.html"]
+ColorMixin [href = "functions/ColorMixin.html"]
+CoordinateGridMixin [href = "classes/CoordinateGridMixin.html"]
+MarginMixin [href = "classes/MarginMixin.html"]
+StackMixin [href = "classes/StackMixin.html"]
+
+BarChart [href = "classes/BarChart.html"]
+BoxPlot [href = "classes/BoxPlot.html"]
+BubbleChart [href = "classes/BubbleChart.html"]
+BubbleOverlay [href = "classes/BubbleOverlay.html"]
+CboxMenu [href = "classes/CboxMenu.html"]
+CompositeChart [href = "classes/CompositeChart.html"]
+DataCount [href = "classes/DataCount.html"]
+DataGrid [href = "classes/DataGrid.html"]
+DataTable [href = "classes/DataTable.html"]
+GeoChoroplethChart [href = "classes/GeoChoroplethChart.html"]
+HeatMap [href = "classes/HeatMap.html"]
+LineChart [href = "classes/LineChart.html"]
+NumberDisplay [href = "classes/NumberDisplay.html"]
+PieChart [href = "classes/PieChart.html"]
+RowChart [href = "classes/RowChart.html"]
+ScatterPlot [href = "classes/ScatterPlot.html"]
+SelectMenu [href = "classes/SelectMenu.html"]
+SeriesChart [href = "classes/SeriesChart.html"]
+SunburstChart [href = "classes/SunburstChart.html"]
+TextFilterWidget [href = "classes/TextFilterWidget.html"]
+
+ColorMixin -> CoordinateGridMixin
+MarginMixin -> CoordinateGridMixin
+CoordinateGridMixin -> StackMixin
+StackMixin -> BarChart
+CoordinateGridMixin -> BoxPlot
+CoordinateGridMixin -> BubbleChart
+BubbleMixin -> BubbleChart
+ColorMixin -> BubbleMixin
+BubbleMixin -> BubbleOverlay
+CoordinateGridMixin -> CompositeChart
+CompositeChart -> SeriesChart
+BaseMixin -> DataCount
+BaseMixin -> DataGrid
+BaseMixin -> DataTable
+BaseMixin -> ColorMixin
+ColorMixin -> GeoChoroplethChart
+BaseMixin -> MarginMixin
+MarginMixin -> HeatMap
+ColorMixin -> HeatMap
+StackMixin -> LineChart
+BaseMixin -> NumberDisplay
+ColorMixin -> PieChart
+MarginMixin -> RowChart
+ColorMixin -> RowChart
+CoordinateGridMixin -> ScatterPlot
+BaseMixin -> SelectMenu
+BaseMixin -> CboxMenu
+ColorMixin -> SunburstChart
+BaseMixin -> TextFilterWidget
+}

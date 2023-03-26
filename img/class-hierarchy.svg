@@ -12,7 +12,7 @@
 <!-- BaseMixin -->
 <g id="node1" class="node">
 <title>BaseMixin</title>
-<g id="a_node1"><a xlink:href="classes/basemixin.html" xlink:title="BaseMixin">
+<g id="a_node1"><a xlink:href="classes/BaseMixin.html" xlink:title="BaseMixin">
 <ellipse fill="lightblue" stroke="black" cx="33.49" cy="-234" rx="33.47" ry="18"/>
 <text text-anchor="middle" x="33.49" y="-231.4" font-family="sans-serif" font-size="9.50">BaseMixin</text>
 </a>
@@ -21,7 +21,7 @@
 <!-- ColorMixin -->
 <g id="node2" class="node">
 <title>ColorMixin</title>
-<g id="a_node2"><a xlink:href="modules.html#colormixin" xlink:title="ColorMixin">
+<g id="a_node2"><a xlink:href="functions/ColorMixin.html" xlink:title="ColorMixin">
 <ellipse fill="lightblue" stroke="black" cx="141.62" cy="-396" rx="34.78" ry="18"/>
 <text text-anchor="middle" x="141.62" y="-393.4" font-family="sans-serif" font-size="9.50">ColorMixin</text>
 </a>
@@ -36,7 +36,7 @@
 <!-- MarginMixin -->
 <g id="node3" class="node">
 <title>MarginMixin</title>
-<g id="a_node3"><a xlink:href="classes/marginmixin.html" xlink:title="MarginMixin">
+<g id="a_node3"><a xlink:href="classes/MarginMixin.html" xlink:title="MarginMixin">
 <ellipse fill="lightblue" stroke="black" cx="141.62" cy="-463" rx="38.87" ry="18"/>
 <text text-anchor="middle" x="141.62" y="-460.4" font-family="sans-serif" font-size="9.50">MarginMixin</text>
 </a>
@@ -51,7 +51,7 @@
 <!-- CboxMenu -->
 <g id="node11" class="node">
 <title>CboxMenu</title>
-<g id="a_node11"><a xlink:href="classes/cboxmenu.html" xlink:title="CboxMenu">
+<g id="a_node11"><a xlink:href="classes/CboxMenu.html" xlink:title="CboxMenu">
 <ellipse fill="palegreen" stroke="black" cx="141.62" cy="-342" rx="33.47" ry="18"/>
 <text text-anchor="middle" x="141.62" y="-339.4" font-family="sans-serif" font-size="9.50">CboxMenu</text>
 </a>
@@ -66,7 +66,7 @@
 <!-- DataCount -->
 <g id="node13" class="node">
 <title>DataCount</title>
-<g id="a_node13"><a xlink:href="classes/datacount.html" xlink:title="DataCount">
+<g id="a_node13"><a xlink:href="classes/DataCount.html" xlink:title="DataCount">
 <ellipse fill="palegreen" stroke="black" cx="141.62" cy="-288" rx="34.78" ry="18"/>
 <text text-anchor="middle" x="141.62" y="-285.4" font-family="sans-serif" font-size="9.50">DataCount</text>
 </a>
@@ -81,7 +81,7 @@
 <!-- DataGrid -->
 <g id="node14" class="node">
 <title>DataGrid</title>
-<g id="a_node14"><a xlink:href="classes/datagrid.html" xlink:title="DataGrid">
+<g id="a_node14"><a xlink:href="classes/DataGrid.html" xlink:title="DataGrid">
 <ellipse fill="palegreen" stroke="black" cx="141.62" cy="-234" rx="30.04" ry="18"/>
 <text text-anchor="middle" x="141.62" y="-231.4" font-family="sans-serif" font-size="9.50">DataGrid</text>
 </a>
@@ -96,7 +96,7 @@
 <!-- DataTable -->
 <g id="node15" class="node">
 <title>DataTable</title>
-<g id="a_node15"><a xlink:href="classes/datatable.html" xlink:title="DataTable">
+<g id="a_node15"><a xlink:href="classes/DataTable.html" xlink:title="DataTable">
 <ellipse fill="palegreen" stroke="black" cx="141.62" cy="-180" rx="32.82" ry="18"/>
 <text text-anchor="middle" x="141.62" y="-177.4" font-family="sans-serif" font-size="9.50">DataTable</text>
 </a>
@@ -111,7 +111,7 @@
 <!-- NumberDisplay -->
 <g id="node19" class="node">
 <title>NumberDisplay</title>
-<g id="a_node19"><a xlink:href="classes/numberdisplay.html" xlink:title="NumberDisplay">
+<g id="a_node19"><a xlink:href="classes/NumberDisplay.html" xlink:title="NumberDisplay">
 <ellipse fill="palegreen" stroke="black" cx="141.62" cy="-126" rx="47.19" ry="18"/>
 <text text-anchor="middle" x="141.62" y="-123.4" font-family="sans-serif" font-size="9.50">NumberDisplay</text>
 </a>
@@ -126,7 +126,7 @@
 <!-- SelectMenu -->
 <g id="node23" class="node">
 <title>SelectMenu</title>
-<g id="a_node23"><a xlink:href="classes/selectmenu.html" xlink:title="SelectMenu">
+<g id="a_node23"><a xlink:href="classes/SelectMenu.html" xlink:title="SelectMenu">
 <ellipse fill="palegreen" stroke="black" cx="141.62" cy="-72" rx="37.56" ry="18"/>
 <text text-anchor="middle" x="141.62" y="-69.4" font-family="sans-serif" font-size="9.50">SelectMenu</text>
 </a>
@@ -141,7 +141,7 @@
 <!-- TextFilterWidget -->
 <g id="node26" class="node">
 <title>TextFilterWidget</title>
-<g id="a_node26"><a xlink:href="classes/textfilterwidget.html" xlink:title="TextFilterWidget">
+<g id="a_node26"><a xlink:href="classes/TextFilterWidget.html" xlink:title="TextFilterWidget">
 <ellipse fill="palegreen" stroke="black" cx="141.62" cy="-18" rx="49.8" ry="18"/>
 <text text-anchor="middle" x="141.62" y="-15.4" font-family="sans-serif" font-size="9.50">TextFilterWidget</text>
 </a>
@@ -156,7 +156,7 @@
 <!-- BubbleMixin -->
 <g id="node4" class="node">
 <title>BubbleMixin</title>
-<g id="a_node4"><a xlink:href="modules.html#bubblemixin" xlink:title="BubbleMixin">
+<g id="a_node4"><a xlink:href="functions/BubbleMixin.html" xlink:title="BubbleMixin">
 <ellipse fill="lightblue" stroke="black" cx="278.63" cy="-328" rx="39.02" ry="18"/>
 <text text-anchor="middle" x="278.63" y="-325.4" font-family="sans-serif" font-size="9.50">BubbleMixin</text>
 </a>
@@ -171,7 +171,7 @@
 <!-- CoordinateGridMixin -->
 <g id="node5" class="node">
 <title>CoordinateGridMixin</title>
-<g id="a_node5"><a xlink:href="classes/coordinategridmixin.html" xlink:title="CoordinateGridMixin">
+<g id="a_node5"><a xlink:href="classes/CoordinateGridMixin.html" xlink:title="CoordinateGridMixin">
 <ellipse fill="lightblue" stroke="black" cx="278.63" cy="-544" rx="62.21" ry="18"/>
 <text text-anchor="middle" x="278.63" y="-541.4" font-family="sans-serif" font-size="9.50">CoordinateGridMixin</text>
 </a>
@@ -186,7 +186,7 @@
 <!-- GeoChoroplethChart -->
 <g id="node16" class="node">
 <title>GeoChoroplethChart</title>
-<g id="a_node16"><a xlink:href="classes/geochoroplethchart.html" xlink:title="GeoChoroplethChart">
+<g id="a_node16"><a xlink:href="classes/GeoChoroplethChart.html" xlink:title="GeoChoroplethChart">
 <ellipse fill="palegreen" stroke="black" cx="278.63" cy="-274" rx="62.21" ry="18"/>
 <text text-anchor="middle" x="278.63" y="-271.4" font-family="sans-serif" font-size="9.50">GeoChoroplethChart</text>
 </a>
@@ -201,7 +201,7 @@
 <!-- HeatMap -->
 <g id="node17" class="node">
 <title>HeatMap</title>
-<g id="a_node17"><a xlink:href="classes/heatmap.html" xlink:title="HeatMap">
+<g id="a_node17"><a xlink:href="classes/HeatMap.html" xlink:title="HeatMap">
 <ellipse fill="palegreen" stroke="black" cx="278.63" cy="-490" rx="30.04" ry="18"/>
 <text text-anchor="middle" x="278.63" y="-487.4" font-family="sans-serif" font-size="9.50">HeatMap</text>
 </a>
@@ -216,7 +216,7 @@
 <!-- PieChart -->
 <g id="node20" class="node">
 <title>PieChart</title>
-<g id="a_node20"><a xlink:href="classes/piechart.html" xlink:title="PieChart">
+<g id="a_node20"><a xlink:href="classes/PieChart.html" xlink:title="PieChart">
 <ellipse fill="palegreen" stroke="black" cx="278.63" cy="-220" rx="28.08" ry="18"/>
 <text text-anchor="middle" x="278.63" y="-217.4" font-family="sans-serif" font-size="9.50">PieChart</text>
 </a>
@@ -231,7 +231,7 @@
 <!-- RowChart -->
 <g id="node21" class="node">
 <title>RowChart</title>
-<g id="a_node21"><a xlink:href="classes/rowchart.html" xlink:title="RowChart">
+<g id="a_node21"><a xlink:href="classes/RowChart.html" xlink:title="RowChart">
 <ellipse fill="palegreen" stroke="black" cx="278.63" cy="-436" rx="31.35" ry="18"/>
 <text text-anchor="middle" x="278.63" y="-433.4" font-family="sans-serif" font-size="9.50">RowChart</text>
 </a>
@@ -246,7 +246,7 @@
 <!-- SunburstChart -->
 <g id="node25" class="node">
 <title>SunburstChart</title>
-<g id="a_node25"><a xlink:href="classes/sunburstchart.html" xlink:title="SunburstChart">
+<g id="a_node25"><a xlink:href="classes/SunburstChart.html" xlink:title="SunburstChart">
 <ellipse fill="palegreen" stroke="black" cx="278.63" cy="-382" rx="45.07" ry="18"/>
 <text text-anchor="middle" x="278.63" y="-379.4" font-family="sans-serif" font-size="9.50">SunburstChart</text>
 </a>
@@ -279,7 +279,7 @@
 <!-- BubbleChart -->
 <g id="node9" class="node">
 <title>BubbleChart</title>
-<g id="a_node9"><a xlink:href="classes/bubblechart.html" xlink:title="BubbleChart">
+<g id="a_node9"><a xlink:href="classes/BubbleChart.html" xlink:title="BubbleChart">
 <ellipse fill="palegreen" stroke="black" cx="416.21" cy="-395" rx="39.68" ry="18"/>
 <text text-anchor="middle" x="416.21" y="-392.4" font-family="sans-serif" font-size="9.50">BubbleChart</text>
 </a>
@@ -294,7 +294,7 @@
 <!-- BubbleOverlay -->
 <g id="node10" class="node">
 <title>BubbleOverlay</title>
-<g id="a_node10"><a xlink:href="classes/bubbleoverlay.html" xlink:title="BubbleOverlay">
+<g id="a_node10"><a xlink:href="classes/BubbleOverlay.html" xlink:title="BubbleOverlay">
 <ellipse fill="palegreen" stroke="black" cx="416.21" cy="-328" rx="45.72" ry="18"/>
 <text text-anchor="middle" x="416.21" y="-325.4" font-family="sans-serif" font-size="9.50">BubbleOverlay</text>
 </a>
@@ -309,7 +309,7 @@
 <!-- StackMixin -->
 <g id="node6" class="node">
 <title>StackMixin</title>
-<g id="a_node6"><a xlink:href="classes/stackmixin.html" xlink:title="StackMixin">
+<g id="a_node6"><a xlink:href="classes/StackMixin.html" xlink:title="StackMixin">
 <ellipse fill="lightblue" stroke="black" cx="416.21" cy="-530" rx="34.78" ry="18"/>
 <text text-anchor="middle" x="416.21" y="-527.4" font-family="sans-serif" font-size="9.50">StackMixin</text>
 </a>
@@ -324,7 +324,7 @@
 <!-- BoxPlot -->
 <g id="node8" class="node">
 <title>BoxPlot</title>
-<g id="a_node8"><a xlink:href="classes/boxplot.html" xlink:title="BoxPlot">
+<g id="a_node8"><a xlink:href="classes/BoxPlot.html" xlink:title="BoxPlot">
 <ellipse fill="palegreen" stroke="black" cx="416.21" cy="-476" rx="27" ry="18"/>
 <text text-anchor="middle" x="416.21" y="-473.4" font-family="sans-serif" font-size="9.50">BoxPlot</text>
 </a>
@@ -345,7 +345,7 @@
 <!-- CompositeChart -->
 <g id="node12" class="node">
 <title>CompositeChart</title>
-<g id="a_node12"><a xlink:href="classes/compositechart.html" xlink:title="CompositeChart">
+<g id="a_node12"><a xlink:href="classes/CompositeChart.html" xlink:title="CompositeChart">
 <ellipse fill="palegreen" stroke="black" cx="416.21" cy="-638" rx="50.46" ry="18"/>
 <text text-anchor="middle" x="416.21" y="-635.4" font-family="sans-serif" font-size="9.50">CompositeChart</text>
 </a>
@@ -360,7 +360,7 @@
 <!-- ScatterPlot -->
 <g id="node22" class="node">
 <title>ScatterPlot</title>
-<g id="a_node22"><a xlink:href="classes/scatterplot.html" xlink:title="ScatterPlot">
+<g id="a_node22"><a xlink:href="classes/ScatterPlot.html" xlink:title="ScatterPlot">
 <ellipse fill="palegreen" stroke="black" cx="416.21" cy="-584" rx="35.59" ry="18"/>
 <text text-anchor="middle" x="416.21" y="-581.4" font-family="sans-serif" font-size="9.50">ScatterPlot</text>
 </a>
@@ -375,7 +375,7 @@
 <!-- BarChart -->
 <g id="node7" class="node">
 <title>BarChart</title>
-<g id="a_node7"><a xlink:href="classes/barchart.html" xlink:title="BarChart">
+<g id="a_node7"><a xlink:href="classes/BarChart.html" xlink:title="BarChart">
 <ellipse fill="palegreen" stroke="black" cx="528.97" cy="-503" rx="29.39" ry="18"/>
 <text text-anchor="middle" x="528.97" y="-500.4" font-family="sans-serif" font-size="9.50">BarChart</text>
 </a>
@@ -390,7 +390,7 @@
 <!-- LineChart -->
 <g id="node18" class="node">
 <title>LineChart</title>
-<g id="a_node18"><a xlink:href="classes/linechart.html" xlink:title="LineChart">
+<g id="a_node18"><a xlink:href="classes/LineChart.html" xlink:title="LineChart">
 <ellipse fill="palegreen" stroke="black" cx="528.97" cy="-557" rx="31.51" ry="18"/>
 <text text-anchor="middle" x="528.97" y="-554.4" font-family="sans-serif" font-size="9.50">LineChart</text>
 </a>
@@ -405,7 +405,7 @@
 <!-- SeriesChart -->
 <g id="node24" class="node">
 <title>SeriesChart</title>
-<g id="a_node24"><a xlink:href="classes/serieschart.html" xlink:title="SeriesChart">
+<g id="a_node24"><a xlink:href="classes/SeriesChart.html" xlink:title="SeriesChart">
 <ellipse fill="palegreen" stroke="black" cx="528.97" cy="-638" rx="37.56" ry="18"/>
 <text text-anchor="middle" x="528.97" y="-635.4" font-family="sans-serif" font-size="9.50">SeriesChart</text>
 </a>
