@@ -400,6 +400,26 @@ The <a href="../classes/PieChart.html#configure">configure</a> and <a href="../c
 <a href="#dataproviders" id="dataproviders" style="color: inherit; text-decoration: none;">
   <h3>DataProviders</h3>
 </a>
+<p>The data related concerns are separated and provided by Data Adaptor classes.
+This will allow additional flexibility:</p>
+<ul>
+<li>Filters are managed by the DataProvider, this allows more than one chart to use the same dimension without messing up filters.</li>
+<li>Create stand alone dc charts without CrossFilter.</li>
+<li>Ability to create dc dashboards with entire data on a remote server with zero hacks. A proof of concept with Elastic Search will be released very soon.</li>
+<li>Make it possible to adapt charts created by other libraries to a dc dashboard (future plan).</li>
+<li>Ability to save and restore filter state of the dc dashboard, including ability to preserve these across sessions.</li>
+</ul>
+<p>DataProviders, are arranged in a class hierarchy with each layer handling a specific need:</p>
+<ul>
+<li><a href="../classes/CFSimpleAdapter.html">CFSimpleAdapter</a>: Data adaptor for most of the charts<ul>
+<li><a href="../classes/CFMultiAdapter.html">CFMultiAdapter</a>: Data adaptor for multi layer charts based on <a href="../classes/StackMixin.html">StackMixin</a> - <a href="../classes/BarChart.html">BarChart</a> and <a href="../classes/LineChart.html">LineChart</a></li>
+<li><a href="../classes/CFDataCapHelper.html">CFDataCapHelper</a>: Capability to cap the number of items, can be used by charts that need ordinal data, for example <a href="../classes/PieChart.html">PieChart</a> and <a href="../classes/RowChart.html">RowChart</a>.</li>
+</ul>
+</li>
+</ul>
+<p>Examples:</p>
+<pre><code class="language-javascript">
+</code></pre>
 
 <a href="#colorhelpers" id="colorhelpers" style="color: inherit; text-decoration: none;">
   <h3>ColorHelpers</h3>

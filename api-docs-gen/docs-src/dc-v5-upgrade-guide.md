@@ -7,15 +7,15 @@ This has enabled fixing long-standing issues and enabled clean support for remot
 The library is distributed in two variants:
 
 - dc.js — only the newer API, recommended for new projects.
-- dc-compat.js — v4 compatibility mode, which is close to the v4 API. 
-  
+- dc-compat.js — v4 compatibility mode, which is close to the v4 API.
+
 In certain cases, however, you would need to upgrade:
 
 - Only UMD bundles are distributed with `compat` option. If you were using ES6 modules, you would need to upgrade.
 - Support for newer features is not guaranteed in the `compat` mode.
   Mixing of newer APIs with older ones may produce unexpected results.
 - Some APIs are no longer available. Notably `filterHandler`, `hasFilterHandler`, `addFilterHandler` and `removeFilterHandler`. If your code relies on any of these, you would need to upgrade rewrite using newer features.
-  
+
 Please raise an issue on GitHub if you run into problems not covered here!
 
 ## Key changes
@@ -312,6 +312,64 @@ List of accessors that have moved to conf:
 
 ### DataProviders
 
+The data related concerns are separated and provided by Data Adaptor classes.
+This will allow additional flexibility:
+
+- Filters are managed by the DataProvider, this allows more than one chart to use the same dimension without messing up filters.
+- Create stand alone dc charts without CrossFilter.
+- Ability to create dc dashboards with entire data on a remote server with zero hacks. A proof of concept with Elastic Search will be released very soon.
+- Make it possible to adapt charts created by other libraries to a dc dashboard (future plan).
+- Ability to save and restore filter state of the dc dashboard, including ability to preserve these across sessions.
+
+DataProviders, are arranged in a class hierarchy with each layer handling a specific need:
+
+- {@link CFSimpleAdapter}: Data adaptor for most of the charts
+  - {@link CFMultiAdapter}: Data adaptor for multi layer charts based on {@link StackMixin} - {@link BarChart} and {@link LineChart}
+  - {@link CFDataCapHelper}: Capability to cap the number of items, can be used by charts that need ordinal data, for example {@link PieChart} and {@link RowChart}.
+
+Examples:
+
+```javascript
+const quarterChart = new dc.PieChart('#quarter-chart', chartGroup);
+quarterChart.dataProvider(
+  new dc.CFSimpleAdapter({
+    dimension: quarter,
+    group: quarterGroup,
+  })
+);
+
+const chart = new dc.PieChart('#pie01', chartGroup);
+chart.dataProvider(
+  new dc.CFDataCapHelper({
+    cap: 4,
+    dimension: runDimension,
+    group: speedSumGroup,
+  })
+);
+
+const moveChart = new dc.LineChart('#monthly-move-chart', chartGroup);
+moveChart.dataProvider(
+  new dc.CFMultiAdapter({
+    dimension: moveMonths,
+    layers: [
+      // Add the first layer of the stack with group. The `name` is used for label in legends.
+      {
+        group: indexAvgByMonthGroup,
+        name: 'Monthly Index Average',
+        valueAccessor: d => d.value.avg,
+      },
+      {
+        // Stack additional layers with `.stack`. The first paramenter is a new group.
+        // The second parameter is the series name. The third is a value accessor.
+        group: monthlyMoveGroup,
+        name: 'Monthly Index Move',
+        valueAccessor: d => d.value,
+      },
+    ],
+  })
+);
+```
+
 ### ColorHelpers
 
 ### ChartGroup
@@ -321,7 +379,7 @@ This links all charts so that filtering one of the charts causes updates in all 
 Up to dc@v4 ChartRegistry maintained these lists as global variables.
 This required `deregisterAllCharts` to be called to clear those references so that charts could be garbage collected.
 dc@v5 introduces {@link ChartGroup}, an instance of {@link ChartGroup} maintains list of all related charts.
-References to charts are no longer kept in global variables, so as soon as the `chartObject` instance 
+References to charts are no longer kept in global variables, so as soon as the `chartObject` instance
 and all chart instances go out of scope, these should get garbage collected without needing an explicit call to
 clear the list.
 
