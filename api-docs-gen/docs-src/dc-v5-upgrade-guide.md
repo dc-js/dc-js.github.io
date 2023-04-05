@@ -225,9 +225,7 @@ List of accessors that have moved to conf:
   - othersLabel: see {@link ICFDataCapHelperConf#othersLabel}
   - othersGrouper: see {@link ICFDataCapHelperConf#othersGrouper}
 - {@link ColorMixin}
-  - colorCalculator: see [ColorHelpers](#colorhelpers)
-  - colors: see [ColorHelpers](#colorhelpers)
-  - colorDomain: see [ColorHelpers](#colorhelpers)
+  - colors: if you were passing a color scale, please use `chart.colorScale(scale)`. If you were passing an array it should be converted to `chart.colorScale(d3.scaleQuantize().range(colorScale))`.
 - {@link CoordinateGridMixin}
   - rangeChart: no longer needed. Just associate charts with the same dimension. See [stocks example](../..)
   - focusChart: no longer needed. Just associate charts with the same dimension. See [stocks example](../..)
@@ -381,8 +379,6 @@ moveChart.dataProvider(
 1. Typically you will set `dimesnion`, `group` and `valueAccessor`. Please see {@link ICFSimpleAdapterConf} for all possible options.
 1. In addition, if you are using capping, you will also set `cap`. Please see {@link ICFDataCapHelperConf} for all possible options.
 1. For stack based charts, please set `dimension` and `layers`. Please see {@link ICFMultiAdapterConf} for all possible options. Also check the example above.
-
-### ColorHelpers
 
 ### ChartGroup
 
