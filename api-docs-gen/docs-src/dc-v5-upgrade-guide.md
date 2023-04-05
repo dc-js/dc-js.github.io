@@ -214,16 +214,16 @@ List of accessors that have moved to conf:
 
 ## Deprecated
 
-- {@link BaseMixin}
-  - dimension: see [DataProviders](#dataproviders)
-  - group: see [DataProviders](#dataproviders)
-  - ordering: see [DataProviders](#dataproviders)
-  - valueAccessor: see [DataProviders](#dataproviders)
-- CapMixin
-  - cap: see [DataProviders](#dataproviders)
-  - takeFront: see [DataProviders](#dataproviders)
-  - othersLabel: see [DataProviders](#dataproviders)
-  - othersGrouper: see [DataProviders](#dataproviders)
+- {@link BaseMixin} - set the following as configuration on a DataProvider, see {@link CFSimpleAdapter}, {@link ICFSimpleAdapterConf} and [DataProviders](#dataproviders)
+  - dimension: see {@link ICFSimpleAdapterConf#dimension}
+  - group: see {@link ICFSimpleAdapterConf#group}
+  - ordering: see {@link ICFSimpleAdapterConf#ordering}
+  - valueAccessor: see {@link ICFSimpleAdapterConf#valueAccessor}
+- CapMixin - set the following as configuration on {@link CFDataCapHelper}. See {@link ICFDataCapHelperConf} and [DataProviders](#dataproviders)
+  - cap: see {@link ICFDataCapHelperConf#cap}
+  - takeFront: see {@link ICFDataCapHelperConf#takeFront}
+  - othersLabel: see {@link ICFDataCapHelperConf#othersLabel}
+  - othersGrouper: see {@link ICFDataCapHelperConf#othersGrouper}
 - {@link ColorMixin}
   - colorCalculator: see [ColorHelpers](#colorhelpers)
   - colors: see [ColorHelpers](#colorhelpers)
@@ -327,7 +327,9 @@ DataProviders, are arranged in a class hierarchy with each layer handling a spec
   - {@link CFMultiAdapter}: Data adaptor for multi layer charts based on {@link StackMixin} - {@link BarChart} and {@link LineChart}
   - {@link CFDataCapHelper}: Capability to cap the number of items, can be used by charts that need ordinal data, for example {@link PieChart} and {@link RowChart}.
 
-Examples:
+See [examples folder](/examples) for complete examples.
+
+Sample snippets:
 
 ```javascript
 const quarterChart = new dc.PieChart('#quarter-chart', chartGroup);
@@ -369,6 +371,16 @@ moveChart.dataProvider(
   })
 );
 ```
+
+#### How to use DataAdaptor
+
+1. Choose the appropriate class:
+   1. If your chart supports stacks (currently {@link BarChart} and {@link LineChart}), you will need {@link CFMultiAdapter}.
+   1. If you need to cap data number of entries in the chart, you will need {@link CFDataCapHelper}.
+   1. In other cases you will need {@link CFSimpleAdapter}.
+1. Typically you will set `dimesnion`, `group` and `valueAccessor`. Please see {@link ICFSimpleAdapterConf} for all possible options.
+1. In addition, if you are using capping, you will also set `cap`. Please see {@link ICFDataCapHelperConf} for all possible options.
+1. For stack based charts, please set `dimension` and `layers`. Please see {@link ICFMultiAdapterConf} for all possible options. Also check the example above.
 
 ### ColorHelpers
 
