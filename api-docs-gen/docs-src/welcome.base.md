@@ -1,5 +1,3 @@
-# dc.js
-
 Welcome to the dc.js documentation.
 
 This library id developed using Typescript and may be used as ES6 modules or as a JS file (UMD) in your webpage.
