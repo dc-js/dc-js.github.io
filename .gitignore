@@ -9,3 +9,6 @@ _site
 api-docs-gen/node_modules
 api-docs-gen/src
 api-docs-gen/tsconfig.json
+
+# Generated docs - these are generated during the GitHub pages build process
+api-docs
