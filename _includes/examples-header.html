@@ -1,0 +1,32 @@
+{% assign url_parts = page.url | split: "/" %}
+{% assign dir = url_parts[-2] %}
+{% assign filename = url_parts[-1] %}
+
+<nav class="navbar navbar-expand-sm bg-body-tertiary rounded" aria-label="navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img src="../dc.logo.png" width="30" height="30" class="d-inline-block align-top" alt="dc logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-top" aria-controls="navbar-top" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar-top">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href=".">all {{ dir }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/dc-js/dc-js.github.io/blob/master/{{ dir }}/{{ filename }}">source</a>
+        </li>
+      </ul>
+      <span class="navbar-text small" id="versions"></span>
+    </div>
+  </div>
+</nav>
+
+<script type="application/javascript">
+  document.addEventListener("DOMContentLoaded", () => {
+    d3.select('#versions').text(`dc.js: ${dc.version}, d3: ${d3.version}`);
+  });
+</script>

@@ -6,13 +6,16 @@
   <head>
     <title>dc.js - Line Chart Example</title>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     {% include cdn-css-links.html %}
   </head>
   <body>
     <div class="container">
-      <div id="header"></div>
-      <!--  <script type="text/javascript" src="header.js"></script>-->
-      {% include cdn-js-links.html %} {{ content }}
+      {% include examples-header.html %}
+
+      {% include cdn-js-links.html %}
+
+      {{ content }}
     </div>
   </body>
 </html>
