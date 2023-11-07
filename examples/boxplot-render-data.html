@@ -1,54 +1,34 @@
 ---
+layout: example
+title: Box Plot Rendering Data Points
 ---
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>dc.js - Box Plot Rendering Data Points</title>
-    <meta charset="UTF-8" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-      crossorigin="anonymous"
-    />
-    <!-- <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" /> -->
-    <link rel="stylesheet" type="text/css" href="../css/dc.css" />
-    <link type="text/css" rel="stylesheet" href="../css/dc-floatleft.css" />
+<div class="row justify-content-center">
+  <div class="col-12 col-md-4 max-width-360" style="text-align: center">
+    <h6>dataOpacity = 1<br />dataWidthPortion = 0.9</h6>
+    <div id="boxPlot01" class="ratio ratio-4x3"></div>
+  </div>
+  <div class="col-12 col-md-4 max-width-360" style="text-align: center">
+    <h6>dataOpacity = 0.5<br />dataWidthPortion = 0.5</h6>
+    <div id="boxPlot02" class="ratio ratio-4x3"></div>
+  </div>
+  <div class="col-12 col-md-4 max-width-360" style="text-align: center">
+    <h6>dataOpacity = 0.4<br />dataWidthPortion = 0.1</h6>
+    <div id="boxPlot03" class="ratio ratio-4x3"></div>
+  </div>
+</div>
 
-    <script type="text/javascript" src="header.js"></script>
+<script type="text/javascript">
+  const chartGroup = new dc.ChartGroup();
 
-    {% include cdn-js-links.html %}
-
-  </head>
-  <body>
-    <div class="container">
-      <div id="header"></div>
-      <div class="row">
-        <div class="col-md-4" id="boxPlot01" style="text-align: center">
-          <h6>dataOpacity = 1<br />dataWidthPortion = 0.9</h6>
-        </div>
-        <div class="col-md-4" id="boxPlot02" style="text-align: center">
-          <h6>dataOpacity = 0.5<br />dataWidthPortion = 0.5</h6>
-        </div>
-        <div class="col-md-4" id="boxPlot03" style="text-align: center">
-          <h6>dataOpacity = 0.4<br />dataWidthPortion = 0.1</h6>
-        </div>
-      </div>
-    </div>
-
-
-    <script type="text/javascript">
-      const chartGroup = new dc.ChartGroup();
-
-      // prettier-ignore
-      const genderColors = {
+  // prettier-ignore
+  const genderColors = {
         'Female': '#efc3e2',
         'Male': '#76bbe1'
       };
 
-      // prettier-ignore
-      const data = [
+  // prettier-ignore
+  const data = [
           {'_id':  1, 'club': 'Tiny Tots',   'sport': 'Soccer',     'gender': 'Male',   'age' : 5},
           {'_id':  2, 'club': 'Tiny Tots',   'sport': 'Soccer',     'gender': 'Male',   'age' : 6},
           {'_id':  3, 'club': 'Tiny Tots',   'sport': 'Gymnastics', 'gender': 'Male',   'age' : 7},
@@ -96,127 +76,93 @@
           {'_id': 45, 'club': 'High Flyers', 'sport': 'Baseball',   'gender': 'Male',   'age' : 14},
       ];
 
-      const ndx = crossfilter(data);
+  const ndx = crossfilter(data);
 
-      // -----------------------------------------------
-      const bpGenderDim = ndx.dimension(d => d.gender);
-      const bpGenderGroup = bpGenderDim.group().reduce(
-        (p, v) => {
-          // Retrieve the data value, if not Infinity or null add it.
-          const dv = v.age;
-          if (dv !== Infinity && dv !== null) {
-            p.splice(d3.bisectLeft(p, dv), 0, dv);
-          }
-          return p;
-        },
-        (p, v) => {
-          // Retrieve the data value, if not Infinity or null remove it.
-          const dv = v.age;
-          if (dv !== Infinity && dv !== null) {
-            p.splice(d3.bisectLeft(p, dv), 1);
-          }
-          return p;
-        },
-        () => []
-      );
+  // -----------------------------------------------
+  const bpGenderDim = ndx.dimension(d => d.gender);
+  const bpGenderGroup = bpGenderDim.group().reduce(
+    (p, v) => {
+      // Retrieve the data value, if not Infinity or null add it.
+      const dv = v.age;
+      if (dv !== Infinity && dv !== null) {
+        p.splice(d3.bisectLeft(p, dv), 0, dv);
+      }
+      return p;
+    },
+    (p, v) => {
+      // Retrieve the data value, if not Infinity or null remove it.
+      const dv = v.age;
+      if (dv !== Infinity && dv !== null) {
+        p.splice(d3.bisectLeft(p, dv), 1);
+      }
+      return p;
+    },
+    () => []
+  );
 
-      // -----------------------------------------------
-      const bp01 = new dc.BoxPlot('#boxPlot01', chartGroup);
+  const commonChartConf = {
+    tickFormat: d3.format('.1f'),
+    renderDataPoints: true,
+    renderTitle: true,
+    dataOpacity: 1,
+    dataWidthPortion: 0.9,
+    elasticY: true,
+    elasticX: true,
+    colorAccessor: d => d.key,
+  };
 
-      bp01
-        .configure({
-          width: 320,
-          height: 250,
-        })
-        .dataProvider(
-          new dc.CFSimpleAdapter({
-            dimension: bpGenderDim,
-            group: bpGenderGroup,
-          })
-        )
-        .configure({
-          tickFormat: d3.format('.1f'),
-          renderDataPoints: true,
-          renderTitle: true,
-          dataOpacity: 1,
-          dataWidthPortion: 0.9,
-          elasticY: true,
-          elasticX: true,
-        })
-        .yAxisLabel('Age (years)')
-        .xAxisLabel('Gender', 0);
+  // -----------------------------------------------
+  const bp01 = new dc.BoxPlot('#boxPlot01', chartGroup);
 
-      bp01
-        .configure({
-          colorAccessor: d => d.key,
-        })
-        .colorScale(d => genderColors[d]);
+  bp01
+    .dataProvider(
+      new dc.CFSimpleAdapter({
+        dimension: bpGenderDim,
+        group: bpGenderGroup,
+      })
+    )
+    .configure(commonChartConf)
+    .colorScale(d => genderColors[d])
+    .yAxisLabel('Age (years)')
+    .xAxisLabel('Gender', 0);
 
-      // -----------------------------------------------
-      const bp02 = new dc.BoxPlot('#boxPlot02', chartGroup);
+  // -----------------------------------------------
+  const bp02 = new dc.BoxPlot('#boxPlot02', chartGroup);
 
-      bp02
-        .configure({
-          width: 320,
-          height: 250,
-        })
-        .dataProvider(
-          new dc.CFSimpleAdapter({
-            dimension: bpGenderDim,
-            group: bpGenderGroup,
-          })
-        )
-        .configure({
-          tickFormat: d3.format('.1f'),
-          renderDataPoints: true,
-          renderTitle: true,
-          dataOpacity: 0.5,
-          dataWidthPortion: 0.5,
-          elasticY: true,
-          elasticX: true,
-        })
-        .yAxisLabel('Age (years)')
-        .xAxisLabel('Gender', 0);
+  bp02
+    .dataProvider(
+      new dc.CFSimpleAdapter({
+        dimension: bpGenderDim,
+        group: bpGenderGroup,
+      })
+    )
+    .configure(commonChartConf)
+    .configure({
+      dataOpacity: 0.5,
+      dataWidthPortion: 0.5,
+    })
+    .colorScale(d => genderColors[d])
+    .yAxisLabel('Age (years)')
+    .xAxisLabel('Gender', 0);
 
-      bp02
-        .configure({
-          colorAccessor: d => d.key,
-        })
-        .colorScale(d => genderColors[d]);
+  // -----------------------------------------------
+  const bp03 = new dc.BoxPlot('#boxPlot03', chartGroup);
 
-      // -----------------------------------------------
-      const bp03 = new dc.BoxPlot('#boxPlot03', chartGroup);
+  bp03
+    .dataProvider(
+      new dc.CFSimpleAdapter({
+        dimension: bpGenderDim,
+        group: bpGenderGroup,
+      })
+    )
+    .configure(commonChartConf)
+    .configure({
+      dataOpacity: 0.4,
+      dataWidthPortion: 0.1,
+    })
+    .colorScale(d => genderColors[d])
+    .yAxisLabel('Age (years)')
+    .xAxisLabel('Gender', 0);
 
-      bp03
-        .configure({
-          width: 320,
-          height: 250,
-        })
-        .dataProvider(
-          new dc.CFSimpleAdapter({
-            dimension: bpGenderDim,
-            group: bpGenderGroup,
-          })
-        )
-        .configure({
-          tickFormat: d3.format('.1f'),
-          renderDataPoints: true,
-          renderTitle: true,
-          dataOpacity: 0.4,
-          dataWidthPortion: 0.1,
-          elasticY: true,
-          elasticX: true,
-        })
-        .yAxisLabel('Age (years)')
-        .xAxisLabel('Gender', 0);
-
-      bp03
-        .configure({
-          colorAccessor: d => d.key,
-        })
-        .colorScale(d => genderColors[d]);
-
-      chartGroup.renderAll();
-    </script>
-  </body>
-</html>
+  chartGroup.renderAll();
+</script>

@@ -57,7 +57,7 @@
     },
     {
         "example-name": "click-limit-on-histogram",
-        "difficulty-level": "beginner"
+        "difficulty-level": "ninja"
     },
     {
         "example-name": "color-swatch",
@@ -73,7 +73,7 @@
     },
     {
         "example-name": "composite-bar-line",
-        "difficulty-level": "intermediate"
+        "difficulty-level": "beginner"
     },
     {
         "example-name": "composite-brush-multi-dim",
@@ -189,7 +189,7 @@
     },
     {
         "example-name": "row-targets",
-        "difficulty-level": "beginner"
+        "difficulty-level": "ninja"
     },
     {
         "example-name": "row-top-axis",
@@ -197,7 +197,7 @@
     },
     {
         "example-name": "row-vertical-line",
-        "difficulty-level": "beginner"
+        "difficulty-level": "intermediate"
     },
     {
         "example-name": "row",
@@ -205,10 +205,6 @@
     },
     {
         "example-name": "scatter-brushing",
-        "difficulty-level": "intermediate"
-    },
-    {
-        "example-name": "scatter-canvas-brushing",
         "difficulty-level": "intermediate"
     },
     {

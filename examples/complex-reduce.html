@@ -1,246 +1,223 @@
 ---
+layout: example
+title: Complex Reductions
+additional_head: |
+  <style>
+    label {
+      display: inline;
+      padding-left: 0.2em;
+      padding-right: 1em;
+    }
+  </style>
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>dc.js - Complex Reductions Example</title>
-    <meta charset="UTF-8" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-      crossorigin="anonymous"
-    />
-    <!-- <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" /> -->
-    <link rel="stylesheet" type="text/css" href="../css/dc.css" />
-    <link type="text/css" rel="stylesheet" href="../css/dc-floatleft.css" />
+<div class="row justify-content-center">
+  <div class="col-12 max-width-1000">
+    <p>
+      Frequently asked question: how to show the minimum/maximum of some value
+      in the rows?
+    </p>
 
-    <script type="text/javascript" src="header.js"></script>
+    <p>
+      Some kinds of reductions require the entire set of values at every step:
+      median, mode, minimum, maximum. (The mean just needs a running sum.)
+    </p>
 
-    {% include cdn-js-links.html %}
-    
-    <style>
-      label {
-        display: inline;
-        padding-left: 1em;
-      }
-      label input {
-        vertical-align: top;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div id="header"></div>
-      <p>
-        Frequently asked question: how to show the minimum/maximum of some value
-        in the rows?
-      </p>
+    <p>This example shows how to keep the set of values.</p>
 
-      <p>
-        Some kinds of reductions require the entire set of values at every step:
-        median, mode, minimum, maximum. (The mean just needs a running sum.)
-      </p>
-
-      <p>This example shows how to keep the set of values.</p>
-
-      <div id="select-operation">
-        <label
-          ><input
-            type="radio"
-            name="operation"
-            value="median"
-            checked="true"
-          />&nbsp;median</label
-        >
-        <label
-          ><input type="radio" name="operation" value="mode" />&nbsp;mode</label
-        >
-        <label
-          ><input type="radio" name="operation" value="min" />&nbsp;min</label
-        >
-        <label
-          ><input type="radio" name="operation" value="max" />&nbsp;max</label
-        >
-      </div>
-      <div id="test-run">
-        <h4>Run</h4>
-        <div class="reset" style="visibility: hidden">
-          selected: <span class="filter"></span>
-          <a href="javascript:runChart.filterAll();dc.redrawAll();">reset</a>
-        </div>
-      </div>
-      <div id="test-expt">
-        <h4>Experiment</h4>
-        <div class="reset" style="visibility: hidden">
-          selected: <span class="filter"></span>
-          <a href="javascript:exptChart.filterAll();dc.redrawAll();">reset</a>
-        </div>
-      </div>
-
-
-      <script type="text/javascript">
-        const chartGroup = new dc.ChartGroup();
-        // reduction functions that keep a sorted array of rows. the rows must either have a unique key,
-        // or it must not matter if the same row is removed as was added previously
-
-        // instead of calculating the desired metric on every change, which is slow, we'll just maintain
-        // these arrays of rows and calculate the metrics when needed in the accessor
-        function groupArrayAdd(keyfn) {
-          const bisect = d3.bisector(keyfn);
-          return function (elements, item) {
-            const pos = bisect.right(elements, keyfn(item));
-            elements.splice(pos, 0, item);
-            return elements;
-          };
-        }
-
-        function groupArrayRemove(keyfn) {
-          const bisect = d3.bisector(keyfn);
-          return function (elements, item) {
-            const pos = bisect.left(elements, keyfn(item));
-            if (keyfn(elements[pos]) === keyfn(item)) {
-              elements.splice(pos, 1);
-            }
-            return elements;
-          };
-        }
-
-        function groupArrayInit() {
-          return [];
-        }
-
-        // adapted from Code Review: Finding the mode of an array
-        // http://codereview.stackexchange.com/a/68431/108362
-        const mode = function mode(arr, acc) {
-          return arr.reduce(
-            (current, item) => {
-              item = acc(item);
-              const val = (current.numMapping[item] =
-                (current.numMapping[item] || 0) + 1);
-              if (val > current.greatestFreq) {
-                current.greatestFreq = val;
-                current.mode = item;
-              }
-              return current;
-            },
-            { mode: null, greatestFreq: -Infinity, numMapping: {} },
-            arr
-          ).mode;
-        };
-
-        const runChart = new dc.BarChart('#test-run', chartGroup),
-          exptChart = new dc.BarChart('#test-expt', chartGroup);
-
-        d3.csv('morley.csv').then(experiments => {
-          experiments.forEach(x => {
-            x.Speed = +x.Speed;
-          });
-
-          const ndx = crossfilter(experiments),
-            runKey = d => +d.Run,
-            exptKey = d => +d.Expt,
-            speedValue = d => d.Speed,
-            runDimension = ndx.dimension(runKey),
-            exptDimension = ndx.dimension(exptKey),
-            runAvgGroup = runDimension
-              .group()
-              .reduce(
-                groupArrayAdd(exptKey),
-                groupArrayRemove(exptKey),
-                groupArrayInit
-              ),
-            exptAvgGroup = exptDimension
-              .group()
-              .reduce(
-                groupArrayAdd(runKey),
-                groupArrayRemove(runKey),
-                groupArrayInit
-              );
-
-          function medianSpeed(kv) {
-            return d3.median(kv.value, speedValue);
-          }
-          function modeSpeed(kv) {
-            return mode(kv.value, speedValue);
-          }
-          function minSpeed(kv) {
-            return d3.min(kv.value, speedValue);
-          }
-          function maxSpeed(kv) {
-            return d3.max(kv.value, speedValue);
-          }
-          const accessors = {
-            median: medianSpeed,
-            mode: modeSpeed,
-            min: minSpeed,
-            max: maxSpeed,
-          };
-
-          d3.selectAll('#select-operation input').on('click', function () {
-            runChart.dataProvider().configure({
-              valueAccessor: accessors[this.value],
-            });
-            exptChart.dataProvider().configure({
-              valueAccessor: accessors[this.value],
-            });
-            chartGroup.redrawAll();
-          });
-
-          runChart
-            .configure({
-              width: 400,
-              height: 300,
-            })
-            .dataProvider(
-              new dc.CFMultiAdapter({
-                valueAccessor: medianSpeed,
-                dimension: runDimension,
-                layers: [
-                  {
-                    group: runAvgGroup,
-                  },
-                ],
-              })
-            )
-            .configure({
-              xUnits: dc.UnitsOrdinal,
-              elasticY: true,
-              brushOn: true,
-              controlsUseVisibility: true,
-            })
-            .x(d3.scaleBand());
-
-          exptChart
-            .configure({
-              width: 400,
-              height: 300,
-            })
-            .dataProvider(
-              new dc.CFMultiAdapter({
-                valueAccessor: medianSpeed,
-                dimension: exptDimension,
-                layers: [
-                  {
-                    group: exptAvgGroup,
-                  },
-                ],
-              })
-            )
-            .configure({
-              xUnits: dc.UnitsOrdinal,
-              elasticY: true,
-              brushOn: true,
-              controlsUseVisibility: true,
-            })
-            .x(d3.scaleBand());
-
-          runChart.margins().left = exptChart.margins().left = 35;
-
-          chartGroup.renderAll();
-        });
-      </script>
+    <div id="select-operation">
+      <input
+        type="radio"
+        id="opt-median"
+        name="operation"
+        value="median"
+        checked="checked"
+      /><label for="opt-median">median</label>
+      <input type="radio" id="opt-mode" name="operation" value="mode" /><label
+        for="opt-mode"
+        >mode</label
+      >
+      <input type="radio" id="opt-min" name="operation" value="min" /><label
+        for="opt-min"
+        >min</label
+      >
+      <input type="radio" id="opt-max" name="operation" value="max" /><label
+        for="opt-max"
+        >max</label
+      >
     </div>
-  </body>
-</html>
+  </div>
+</div>
+<div class="row justify-content-center" style="margin-top: 20px">
+  <div class="col-12 col-md-6 max-width-500">
+    <h4 class="chart-title">Run</h4>
+    <div id="test-run" class="ratio ratio-4x3 chart-with-reset">
+      <div class="reset" style="visibility: hidden">
+        selected: <span class="filter"></span>
+        <a href="javascript:runChart.filterAll();dc.redrawAll();">reset</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-6 max-width-500">
+    <h4 class="chart-title">Experiment</h4>
+    <div id="test-expt" class="ratio ratio-4x3 chart-with-reset">
+      <div class="reset" style="visibility: hidden">
+        selected: <span class="filter"></span>
+        <a href="javascript:exptChart.filterAll();dc.redrawAll();">reset</a>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  const chartGroup = new dc.ChartGroup();
+  // reduction functions that keep a sorted array of rows. the rows must either have a unique key,
+  // or it must not matter if the same row is removed as was added previously
+
+  // instead of calculating the desired metric on every change, which is slow, we'll just maintain
+  // these arrays of rows and calculate the metrics when needed in the accessor
+  function groupArrayAdd(keyfn) {
+    const bisect = d3.bisector(keyfn);
+    return function (elements, item) {
+      const pos = bisect.right(elements, keyfn(item));
+      elements.splice(pos, 0, item);
+      return elements;
+    };
+  }
+
+  function groupArrayRemove(keyfn) {
+    const bisect = d3.bisector(keyfn);
+    return function (elements, item) {
+      const pos = bisect.left(elements, keyfn(item));
+      if (keyfn(elements[pos]) === keyfn(item)) {
+        elements.splice(pos, 1);
+      }
+      return elements;
+    };
+  }
+
+  function groupArrayInit() {
+    return [];
+  }
+
+  // adapted from Code Review: Finding the mode of an array
+  // http://codereview.stackexchange.com/a/68431/108362
+  const mode = function mode(arr, acc) {
+    return arr.reduce(
+      (current, item) => {
+        item = acc(item);
+        const val = (current.numMapping[item] =
+          (current.numMapping[item] || 0) + 1);
+        if (val > current.greatestFreq) {
+          current.greatestFreq = val;
+          current.mode = item;
+        }
+        return current;
+      },
+      { mode: null, greatestFreq: -Infinity, numMapping: {} },
+      arr
+    ).mode;
+  };
+
+  const runChart = new dc.BarChart('#test-run', chartGroup),
+    exptChart = new dc.BarChart('#test-expt', chartGroup);
+
+  d3.csv('morley.csv').then(experiments => {
+    experiments.forEach(x => {
+      x.Speed = +x.Speed;
+    });
+
+    const ndx = crossfilter(experiments),
+      runKey = d => +d.Run,
+      exptKey = d => +d.Expt,
+      speedValue = d => d.Speed,
+      runDimension = ndx.dimension(runKey),
+      exptDimension = ndx.dimension(exptKey),
+      runAvgGroup = runDimension
+        .group()
+        .reduce(
+          groupArrayAdd(exptKey),
+          groupArrayRemove(exptKey),
+          groupArrayInit
+        ),
+      exptAvgGroup = exptDimension
+        .group()
+        .reduce(
+          groupArrayAdd(runKey),
+          groupArrayRemove(runKey),
+          groupArrayInit
+        );
+
+    function medianSpeed(kv) {
+      return d3.median(kv.value, speedValue);
+    }
+    function modeSpeed(kv) {
+      return mode(kv.value, speedValue);
+    }
+    function minSpeed(kv) {
+      return d3.min(kv.value, speedValue);
+    }
+    function maxSpeed(kv) {
+      return d3.max(kv.value, speedValue);
+    }
+    const accessors = {
+      median: medianSpeed,
+      mode: modeSpeed,
+      min: minSpeed,
+      max: maxSpeed,
+    };
+
+    d3.selectAll('#select-operation input').on('click', function () {
+      runChart.dataProvider().configure({
+        valueAccessor: accessors[this.value],
+      });
+      exptChart.dataProvider().configure({
+        valueAccessor: accessors[this.value],
+      });
+      chartGroup.redrawAll();
+    });
+
+    runChart
+      .dataProvider(
+        new dc.CFMultiAdapter({
+          valueAccessor: medianSpeed,
+          dimension: runDimension,
+          layers: [
+            {
+              group: runAvgGroup,
+            },
+          ],
+        })
+      )
+      .configure({
+        xUnits: dc.UnitsOrdinal,
+        elasticY: true,
+        brushOn: true,
+        controlsUseVisibility: true,
+      })
+      .x(d3.scaleBand());
+
+    exptChart
+      .dataProvider(
+        new dc.CFMultiAdapter({
+          valueAccessor: medianSpeed,
+          dimension: exptDimension,
+          layers: [
+            {
+              group: exptAvgGroup,
+            },
+          ],
+        })
+      )
+      .configure({
+        xUnits: dc.UnitsOrdinal,
+        elasticY: true,
+        brushOn: true,
+        controlsUseVisibility: true,
+      })
+      .x(d3.scaleBand());
+
+    runChart.margins().left = exptChart.margins().left = 35;
+
+    chartGroup.renderAll();
+  });
+</script>
